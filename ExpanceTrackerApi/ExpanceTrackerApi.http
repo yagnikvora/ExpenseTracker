@@ -1,0 +1,6 @@
+@ExpanceTrackerApi_HostAddress = http://localhost:5188
+
+GET {{ExpanceTrackerApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

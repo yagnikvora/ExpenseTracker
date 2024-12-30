@@ -1,0 +1,423 @@
+[
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.BudgetsController",
+    "Method": "BudgetUsedByUser",
+    "RelativePath": "api/Budgets/BudgetUsedByUser/{UserID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.BudgetsController",
+    "Method": "DeleteBudgetsByID",
+    "RelativePath": "api/Budgets/DeleteBudgetsByID/{BudgetsID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "BudgetsID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.BudgetsController",
+    "Method": "GetAllBudgets",
+    "RelativePath": "api/Budgets/GetAllBudgets",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.BudgetsController",
+    "Method": "GetAllBudgetsByID",
+    "RelativePath": "api/Budgets/GetAllBudgetsByID/{BudgetsID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "BudgetsID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.BudgetsController",
+    "Method": "InsertBudgets",
+    "RelativePath": "api/Budgets/InsertBudgets",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "budget",
+        "Type": "ExpanceTrackerApi.Models.BudgetsInsertUpdateModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.BudgetsController",
+    "Method": "RemainBudgetAllCategories",
+    "RelativePath": "api/Budgets/RemainBudgetAllCategories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.BudgetsController",
+    "Method": "UpdateBudgets",
+    "RelativePath": "api/Budgets/UpdateBudgets/{BudgetID}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "BudgetID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "budget",
+        "Type": "ExpanceTrackerApi.Models.BudgetsInsertUpdateModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.CategoriesController",
+    "Method": "DeleteCategoriesByID",
+    "RelativePath": "api/Categories/DeleteCategoriesByID/{CategoryID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CategoryID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.CategoriesController",
+    "Method": "GetAllCategories",
+    "RelativePath": "api/Categories/GetAllCategories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.CategoriesController",
+    "Method": "GetAllCategoriesByID",
+    "RelativePath": "api/Categories/GetAllCategoriesByID/{CategoryID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CategoryID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.CategoriesController",
+    "Method": "InsertCategories",
+    "RelativePath": "api/Categories/InsertCategories",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "category",
+        "Type": "ExpanceTrackerApi.Models.CategoriesInsertUpdateModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.CategoriesController",
+    "Method": "UpdateCategories",
+    "RelativePath": "api/Categories/UpdateCategories/{CategoryID}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CategoryID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "category",
+        "Type": "ExpanceTrackerApi.Models.CategoriesInsertUpdateModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.PaymentMethodsController",
+    "Method": "DeletePaymentMethodsByID",
+    "RelativePath": "api/PaymentMethods/DeletePaymentMethodsByID/{PaymentMethodsID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PaymentMethodsID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.PaymentMethodsController",
+    "Method": "GetAllPaymentMethods",
+    "RelativePath": "api/PaymentMethods/GetAllPaymentMethods",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.PaymentMethodsController",
+    "Method": "GetAllPaymentMethodsByID",
+    "RelativePath": "api/PaymentMethods/GetAllPaymentMethodsByID/{PaymentMethodsID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PaymentMethodsID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.PaymentMethodsController",
+    "Method": "InsertPaymentMethods",
+    "RelativePath": "api/PaymentMethods/InsertPaymentMethods",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "paymentMethod",
+        "Type": "ExpanceTrackerApi.Models.PaymentMethodsInsertUpdateModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.PaymentMethodsController",
+    "Method": "UpdatePaymentMethods",
+    "RelativePath": "api/PaymentMethods/UpdatePaymentMethods/{PaymentMethodID}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PaymentMethodID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "paymentMethod",
+        "Type": "ExpanceTrackerApi.Models.PaymentMethodsInsertUpdateModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.TransactionsController",
+    "Method": "DeleteTransactionsByID",
+    "RelativePath": "api/Transactions/DeleteTransactionsByID/{TransactionID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TransactionID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.TransactionsController",
+    "Method": "GetAllTransactions",
+    "RelativePath": "api/Transactions/GetAllTransactions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.TransactionsController",
+    "Method": "GetAllTransactionsByID",
+    "RelativePath": "api/Transactions/GetAllTransactionsByID/{TransactionID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TransactionID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.TransactionsController",
+    "Method": "InsertTransactions",
+    "RelativePath": "api/Transactions/InsertTransactions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "transaction",
+        "Type": "ExpanceTrackerApi.Models.TransactionsInsertUpdateModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.TransactionsController",
+    "Method": "UpdateTransactions",
+    "RelativePath": "api/Transactions/UpdateTransactions/{TransactionID}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TransactionID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "transaction",
+        "Type": "ExpanceTrackerApi.Models.TransactionsInsertUpdateModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.UsersController",
+    "Method": "DeleteUsersByID",
+    "RelativePath": "api/Users/DeleteUsersByID/{UsersID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UsersID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.UsersController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/Users/GetAllUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.UsersController",
+    "Method": "GetAllUsersByID",
+    "RelativePath": "api/Users/GetAllUsersByID/{UsersID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UsersID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.UsersController",
+    "Method": "InsertUsers",
+    "RelativePath": "api/Users/InsertUsers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "ExpanceTrackerApi.Models.UsersModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpanceTrackerApi.Controllers.UsersController",
+    "Method": "UpdateUsers",
+    "RelativePath": "api/Users/UpdateUsers/{UsersID}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UsersID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "user",
+        "Type": "ExpanceTrackerApi.Models.UsersModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
