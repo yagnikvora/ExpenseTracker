@@ -42,6 +42,30 @@ namespace ExpanceTrackerApi.Data
         }
         #endregion
 
+        #region UsersDropdown
+        public List<UsersDropdownModel> UsersDropdown()
+        {
+            var users = new List<UsersDropdownModel>();
+            string connectionString = _configuration.GetConnectionString("myConnectionString");
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            SqlCommand command = connection.CreateCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "PR_Users_Dropdown";
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                users.Add(new UsersDropdownModel
+                {
+                    UserId = Convert.ToInt32(reader["UserId"]),
+                    Name = reader["Name"].ToString(),
+                });
+            }
+            connection.Close();
+            return users;
+        }
+        #endregion
+
         #region GetUserById
         public List<UsersModel> GetUserById(int UsersId)
         {

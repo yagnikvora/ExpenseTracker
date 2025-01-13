@@ -23,6 +23,12 @@ namespace ExpanceTrackerApi.Controllers
             var paymentMethodList = _paymentMethodRepository.GetAllPaymentMethods();
             return Ok(paymentMethodList);
         }
+        [HttpGet]
+        public IActionResult PaymentMethodsDropdown()
+        {
+            var paymentMethodList = _paymentMethodRepository.PaymentMethodsDropdown();
+            return Ok(paymentMethodList);
+        }
 
 
         [HttpGet("{PaymentMethodsID}")]

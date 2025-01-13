@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "concurrently \"npm run run-api\" \"npm run dev\"",
-    "run-api": "dotnet run --project ../ExpanceTrackerApi/ExpanceTrackerApi.csproj",
+    "run-api": "dotnet watch run --project ../ExpanceTrackerApi/ExpanceTrackerApi.csproj",
     "dev": "vite --open",
     "build": "vite build",
     "lint": "eslint .",

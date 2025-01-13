@@ -7,6 +7,10 @@ import Layout from './Layouts/Layout'
 import Signup from './Pages/Signup'
 import Login from './Pages/Login'
 import Dashboard from './Pages/Dashboard'
+import Transactions from './Pages/Transactions'
+import Budgets from './Pages/Budgets'
+import Users from './Pages/Users'
+import AddEditTransactions from './Pages/AddEditTransactions'
 function App() {
   return (
     <>
@@ -17,6 +21,11 @@ function App() {
           <Route path="/signup" element={<Signup />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/dashboard" element={<Dashboard />}/>
+          <Route path="/transactions" element={<Transactions />}/>
+          <Route path="/addedittransaction" element={<AddEditTransactions />}/>
+          <Route path="/addedittransaction/:tid" element={<AddEditTransactions />}/>
+          <Route path="/budgets" element={<Budgets />}/>
+          <Route path="/users" element={<Users />}/>
         </Routes>
         <Footer />
       </BrowserRouter>

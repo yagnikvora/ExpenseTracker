@@ -23,6 +23,12 @@ namespace ExpanceTrackerApi.Controllers
             var userList = _userRepository.GetAllUsers();
             return Ok(userList);
         }
+        [HttpGet]
+        public IActionResult UsersDropdown()
+        {
+            var userList = _userRepository.UsersDropdown();
+            return Ok(userList);
+        }
 
 
         [HttpGet("{UsersID}")]

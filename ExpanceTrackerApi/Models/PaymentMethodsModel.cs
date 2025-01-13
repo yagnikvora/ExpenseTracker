@@ -22,6 +22,11 @@ namespace ExpanceTrackerApi.Models
         public int UserId { get; set; }
     }
 
+    public class PaymentMethodsDropdownModel 
+    { 
+        public int PaymentMethodId { get; set; }
+        public string MethodName { get; set; }
+    }
     public class PaymentMethodsInsertUpdateModelValidator : AbstractValidator<PaymentMethodsInsertUpdateModel>
     {
         public PaymentMethodsInsertUpdateModelValidator()

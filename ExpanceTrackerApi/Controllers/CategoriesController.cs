@@ -23,6 +23,12 @@ namespace ExpanceTrackerApi.Controllers
             var categoryList = _categoryRepository.GetAllCategories();
             return Ok(categoryList);
         }
+        [HttpGet]
+        public IActionResult CategoriesDropdown()
+        {
+            var categoryList = _categoryRepository.CategoriesDropdown();
+            return Ok(categoryList);
+        }
 
 
         [HttpGet("{CategoryID}")]

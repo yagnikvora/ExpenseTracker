@@ -41,6 +41,31 @@ namespace ExpanceTrackerApi.Data
         }
         #endregion
 
+        #region PaymentMethodsDropdown
+        public List<PaymentMethodsDropdownModel> PaymentMethodsDropdown()
+        {
+            var paymentMethods = new List<PaymentMethodsDropdownModel>();
+            string connectionString = _configuration.GetConnectionString("myConnectionString");
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            SqlCommand command = connection.CreateCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "PR_PaymentMethods_Dropdown";
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                paymentMethods.Add(new PaymentMethodsDropdownModel
+                {
+                    PaymentMethodId = Convert.ToInt32(reader["PaymentMethodId"]),
+                    MethodName = reader["MethodName"].ToString(),
+                    
+                });
+            }
+            connection.Close();
+            return paymentMethods;
+        }
+        #endregion
+
         #region GetPaymentMethodById
         public List<PaymentMethodsModel> GetPaymentMethodById(int PaymentMethodId)
         {

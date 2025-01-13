@@ -33,7 +33,7 @@ const Dashboard = () => {
                     <div className="col-md-3 mb-3">
                         <div className="card bg-info bg-opacity-25 h-100 border-0">
                             <div className="card-body">
-                                <h5 className="card-title text-info">Total Budget</h5>
+                                <h5 className="card-title text-info-emphasis">Total Budget</h5>
                                 <h2 className="card-text text-dark">₹{totalAmount}</h2>
                             </div>
                         </div>
@@ -57,7 +57,7 @@ const Dashboard = () => {
                     <div className="col-md-3 mb-3">
                         <div className="card bg-warning bg-opacity-25 h-100 border-0">
                             <div className="card-body">
-                                <h5 className="card-title text-warning">Remaining Budget</h5>
+                                <h5 className="card-title text-warning-emphasis">Remaining Budget</h5>
                                 <h2 className="card-text text-dark">₹{remainBudget}</h2>
                             </div>
                         </div>

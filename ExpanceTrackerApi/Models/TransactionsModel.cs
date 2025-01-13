@@ -10,6 +10,7 @@ namespace ExpanceTrackerApi.Models
         public int TransactionId { get; set; }
         public string UserName { get; set; }
         public string CategoryName { get; set; }
+        public string CategoryType { get; set; }
         public int CategoryId { get; set; }
         public string MethodName { get; set; }
         public int PaymentMethodId { get; set; }

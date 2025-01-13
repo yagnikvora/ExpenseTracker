@@ -17,6 +17,17 @@ namespace ExpanceTrackerApi
                 .AddFluentValidation(c => c.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly()));
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReactApp", policy =>
+                {
+                    policy.WithOrigins("http://localhost:5173") // React app URL
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
+
             builder.Services.AddScoped<UsersRepository>();
             builder.Services.AddScoped<CategoriesRepository>();
             builder.Services.AddScoped<BudgetsRepository>();
@@ -32,6 +43,7 @@ namespace ExpanceTrackerApi
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseCors("AllowReactApp");
 
             app.UseHttpsRedirection();
 

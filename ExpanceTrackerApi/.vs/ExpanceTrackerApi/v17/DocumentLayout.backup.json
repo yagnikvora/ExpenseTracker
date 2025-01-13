@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpanceTrackerApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpanceTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expancetrackerapi\\controllers\\budgetscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpanceTrackerApi.csproj|solutionrelative:controllers\\budgetscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpanceTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expancetrackerapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpanceTrackerApi.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpanceTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expancetrackerapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpanceTrackerApi.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpanceTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expancetrackerapi\\models\\budgetsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpanceTrackerApi.csproj|solutionrelative:models\\budgetsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpanceTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expancetrackerapi\\controllers\\budgetscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpanceTrackerApi.csproj|solutionrelative:controllers\\budgetscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpanceTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expancetrackerapi\\data\\budgetsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,23 +30,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpanceTrackerApi\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpanceTrackerApi\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-01-13T14:49:25.517Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpanceTrackerApi\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpanceTrackerApi\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-01-13T14:49:17.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "BudgetsModel.cs",
               "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpanceTrackerApi\\Models\\BudgetsModel.cs",
               "RelativeDocumentMoniker": "Models\\BudgetsModel.cs",
               "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpanceTrackerApi\\Models\\BudgetsModel.cs",
               "RelativeToolTip": "Models\\BudgetsModel.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAwD0AAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T17:04:58.804Z"
+              "WhenOpened": "2024-12-25T17:04:58.804Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "BudgetsController.cs",
               "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpanceTrackerApi\\Controllers\\BudgetsController.cs",
               "RelativeDocumentMoniker": "Controllers\\BudgetsController.cs",
@@ -46,12 +81,11 @@
               "RelativeToolTip": "Controllers\\BudgetsController.cs",
               "ViewState": "AgIAACAAAAAAAAAAAAAgwCsAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T16:53:24.366Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-25T16:53:24.366Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "BudgetsRepository.cs",
               "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpanceTrackerApi\\Data\\BudgetsRepository.cs",
               "RelativeDocumentMoniker": "Data\\BudgetsRepository.cs",

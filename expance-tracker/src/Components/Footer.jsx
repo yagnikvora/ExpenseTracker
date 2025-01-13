@@ -14,7 +14,7 @@ const Footer = () => {
             </a>
             <p className="mt-2 text-muted">Simplify your finances with our easy-to-use expense tracking solution.</p>
           </div>
-          <div className="col-lg-2 col-md-4 mb-3 mb-md-0 offset-5">
+          {/* <div className="col-lg-2 col-md-4 mb-3 mb-md-0 offset-5">
             <h5 className="text-dark">Quick Links</h5>
             <ul className="list-unstyled">
               <li><a href="/dashboard" className="text-muted text-decoration-none">Dashboard</a></li>
@@ -22,7 +22,7 @@ const Footer = () => {
               <li><a href="/reports" className="text-muted text-decoration-none">Reports</a></li>
               <li><a href="/settings" className="text-muted text-decoration-none">Settings</a></li>
             </ul>
-          </div>
+          </div> */}
         </div>
         <hr className="my-4" />
         <div className="row align-items-center">

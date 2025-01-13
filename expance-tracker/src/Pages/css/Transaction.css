@@ -1,0 +1,33 @@
+.transaction-card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .transaction-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .transaction-card .card-title {
+    font-weight: bold;
+  }
+  
+  .transaction-card .card-footer {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+  
+  .transaction-card .card-body {
+    padding: 20px;
+    background: #f9f9f9;
+  }
+  
+  .transaction-card:hover .card-body {
+    background: #eef4fc;
+  }
+  
+  .card-footer {
+    border-top: 2px solid #007bff;
+  }
+  

@@ -12,6 +12,13 @@ namespace ExpanceTrackerApi.Models
         public DateTime CreatedAt { get; set; }
         public DateTime ModifiedAt { get; set; }
     }
+
+    public class UsersDropdownModel
+    {
+        public int UserId { get; set; }
+
+        public string Name { get; set; }
+    }
     public class UsersModelValidator : AbstractValidator<UsersModel>
     {
         public UsersModelValidator()

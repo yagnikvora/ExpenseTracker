@@ -15,6 +15,11 @@ namespace ExpanceTrackerApi.Models
         public int UserId { get; set; } 
     }
 
+    public class CategoryDropdownModel
+    {
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
+    }
     public class CategoriesInsertUpdateModel
     {
         public int CategoryId { get; set; }

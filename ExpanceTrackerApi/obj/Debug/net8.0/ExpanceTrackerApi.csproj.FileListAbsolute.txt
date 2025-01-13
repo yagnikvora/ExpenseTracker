@@ -101,3 +101,4 @@ Y:\SEM-6\Advance .NET\ExpanceTracker\ExpanceTrackerApi\obj\Debug\net8.0\refint\E
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpanceTrackerApi\obj\Debug\net8.0\ExpanceTrackerApi.pdb
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpanceTrackerApi\obj\Debug\net8.0\ExpanceTrackerApi.genruntimeconfig.cache
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpanceTrackerApi\obj\Debug\net8.0\ref\ExpanceTrackerApi.dll
+Y:\SEM-6\Advance .NET\ExpanceTracker\ExpanceTrackerApi\obj\Debug\net8.0\ExpanceTrackerApi.sourcelink.json

@@ -89,7 +89,7 @@ const Signup = () => {
   return (
     <div className="container-fluid">
       <section className="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
-        <div className="container">
+        <div className="container-fluid">
           <div className="row justify-content-center">
             <div className="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
               <div className="card mb-3 w-100">
@@ -170,7 +170,7 @@ const Signup = () => {
                         name="acceptTerms"
                         required
                       />
-                      <label className="form-check-label" htmlFor="acceptTerms" >I agree and accept the <Link to="" href="#">terms and conditions</Link></label>
+                      <label className="form-check-label d-inline" htmlFor="acceptTerms" >I agree and accept the <Link to="" href="#">terms and conditions</Link></label>
                     </div>
 
                     <div className="d-grid">
