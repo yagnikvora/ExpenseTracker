@@ -1,0 +1,51 @@
+.container {
+max-width: 1200px;
+}
+
+h2 {
+font-family: "Roboto", sans-serif;
+color: #343a40;
+font-weight: 700;
+text-transform: uppercase;
+}
+
+.cat-card {
+border: none;
+border-radius: 12px;
+background-color: #fdfdfd;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cat-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.category-card .card-body {
+padding: 20px;
+}
+
+.category-card .card-title {
+font-size: 1.25rem;
+font-weight: 600;
+color: #007bff;
+}
+
+.category-card .card-subtitle {
+font-size: 1rem;
+font-weight: 500;
+}
+
+.category-card .card-text {
+font-size: 0.9rem;
+color: #6c757d;
+}
+
+.category-card .card-footer {
+background-color: #f8f9fa;
+border-top: none;
+border-radius: 0 0 12px 12px;
+padding: 12px;
+font-size: 0.8rem;
+}

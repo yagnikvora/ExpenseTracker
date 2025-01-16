@@ -12,6 +12,7 @@ import Budgets from './Pages/Budgets'
 import Users from './Pages/Users'
 import AddEditTransactions from './Pages/AddEditTransactions'
 import AddEditBudget from './Pages/AddEditBudget'
+import Category from './Pages/Category'
 function App() {
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
           <Route path="/budgets" element={<Budgets />}/>
           <Route path="/budgets/addeditbudget" element={<AddEditBudget />}/>
           <Route path="/budgets/addeditbudget/:bid" element={<AddEditBudget />}/>
+          <Route path="/categories" element={<Category />}/>
           <Route path="/users" element={<Users />}/>
         </Routes>
         <Footer />

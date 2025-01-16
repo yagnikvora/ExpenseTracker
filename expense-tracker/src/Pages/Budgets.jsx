@@ -29,7 +29,7 @@ const Budgets = () => {
       <div className="row">
         {budget.map((b) => (
           <div key={b.budgetId} className="col-md-4 mb-4 ">
-            <div className="card budget-card shadow-sm border-success rounded ">
+            <div className="card budget-card shadow-sm border border-success rounded ">
               <div className="card-body">
                 <h5 className="card-title budget-card-title text-center text-success">{b.categoryName}</h5>
                 <h6 className='text-center'>Entered by: {b.userName}</h6>

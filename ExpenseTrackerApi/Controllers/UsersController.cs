@@ -2,6 +2,12 @@
 using ExpenseTracketApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.JsonWebTokens;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using JwtRegisteredClaimNames = System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames;
 
 namespace ExpenseTracketApi.Controllers
 {
@@ -10,9 +16,11 @@ namespace ExpenseTracketApi.Controllers
     public class UsersController : ControllerBase
     {
         private readonly UsersRepository _userRepository;
+        private readonly IConfiguration _configuration;
 
-        public UsersController(UsersRepository userRepository)
+        public UsersController(UsersRepository userRepository,IConfiguration configuration )
         {
+            _configuration = configuration;
             _userRepository = userRepository;
         }
 
@@ -23,6 +31,7 @@ namespace ExpenseTracketApi.Controllers
             var userList = _userRepository.GetAllUsers();
             return Ok(userList);
         }
+
         [HttpGet]
         public IActionResult UsersDropdown()
         {
@@ -38,6 +47,38 @@ namespace ExpenseTracketApi.Controllers
             return Ok(userList);
         }
 
+        [HttpPost]
+        public IActionResult Login([FromBody] UsersModel user)
+        {
+            var userData = _userRepository.Login(user);
+            if (userData != null)
+            {
+                var claims = new[]
+                {
+                    new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"] ),
+                    new Claim(JwtRegisteredClaimNames.Jti,  Guid.NewGuid().ToString()),
+                    new Claim("UserId", userData.UserId.ToString()),
+                    new Claim("Email", userData.Email.ToString()),
+                    new Claim("Mobile", userData.Mobile.ToString()),
+
+                };
+
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+                var signIn = new SigningCredentials(key , SecurityAlgorithms.HmacSha256);
+                var token = new JwtSecurityToken(
+                    _configuration["Jwt:Issuer"],
+                    _configuration["Jwt:Audience"],
+                    claims,
+                    expires: DateTime.UtcNow.AddDays(7),
+                    signingCredentials: signIn
+                    );
+
+                string tockenValue = new JwtSecurityTokenHandler().WriteToken(token);
+                return Ok(new {Token = tockenValue, User = userData });
+            }
+
+            return BadRequest();
+        }
 
         [HttpDelete("{UsersID}")]
         public IActionResult DeleteUsersByID(int UsersID)

@@ -29,7 +29,6 @@ Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\System.C
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\System.Memory.Data.dll
-Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\System.Runtime.Caching.dll
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\de\Microsoft.Data.SqlClient.resources.dll
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\es\Microsoft.Data.SqlClient.resources.dll
@@ -43,11 +42,9 @@ Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\zh-Hans\
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
-Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\obj\Debug\net8.0\ExpenseTrackerApi.csproj.AssemblyReference.cache
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\obj\Debug\net8.0\ExpenseTrackerApi.GeneratedMSBuildEditorConfig.editorconfig
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\obj\Debug\net8.0\ExpenseTrackerApi.AssemblyInfoInputs.cache
@@ -70,3 +67,16 @@ Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\obj\Debug\net8.0\refint\E
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\obj\Debug\net8.0\ExpenseTrackerApi.pdb
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\obj\Debug\net8.0\ExpenseTrackerApi.genruntimeconfig.cache
 Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\obj\Debug\net8.0\ref\ExpenseTrackerApi.dll
+Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\Microsoft.Bcl.Cryptography.dll
+Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\System.Diagnostics.EventLog.dll
+Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\cs\Microsoft.Data.SqlClient.resources.dll
+Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\pl\Microsoft.Data.SqlClient.resources.dll
+Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\tr\Microsoft.Data.SqlClient.resources.dll
+Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+Y:\SEM-6\Advance .NET\ExpanceTracker\ExpenseTrackerApi\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

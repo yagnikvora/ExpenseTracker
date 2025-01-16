@@ -421,6 +421,22 @@
   },
   {
     "ContainingType": "ExpenseTracketApi.Controllers.UsersController",
+    "Method": "Login",
+    "RelativePath": "api/Users/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "ExpenseTracketApi.Models.UsersModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpenseTracketApi.Controllers.UsersController",
     "Method": "UpdateUsers",
     "RelativePath": "api/Users/UpdateUsers/{UsersID}",
     "HttpMethod": "PUT",

@@ -1,7 +1,9 @@
 ﻿using ExpenseTracketApi.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using System.Reflection;
 
 namespace ExpenseTracketApi.Data
 {
@@ -42,6 +44,32 @@ namespace ExpenseTracketApi.Data
         }
         #endregion
 
+        public UsersModel Login(UsersModel user)
+        {
+            UsersModel userData = null;
+            string connectionString = _configuration.GetConnectionString("myConnectionString");
+            SqlConnection connection = new SqlConnection( connectionString);
+            connection.Open();
+            SqlCommand command = connection.CreateCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "PR_Users_Login";
+            command.Parameters.AddWithValue("Email", user.Email);
+            command.Parameters.AddWithValue("PasswordHash", user.PasswordHash);
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                userData = new UsersModel
+                {
+                    UserId = Convert.ToInt32(reader["UserId"]),
+                    Name = reader["Name"].ToString(),
+                    Email = reader["Email"].ToString(),
+                    Mobile = reader["Mobile"].ToString(),
+                    PasswordHash = reader["PasswordHash"].ToString(),
+                };
+            }
+            return userData;
+
+        }
         #region UsersDropdown
         public List<UsersDropdownModel> UsersDropdown()
         {
@@ -152,6 +180,11 @@ namespace ExpenseTracketApi.Data
             int rowsAffected = command.ExecuteNonQuery();
             isUpdate = rowsAffected > 0;
             return isUpdate;
+        }
+
+        internal object GetUserById(UsersModel user)
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }
