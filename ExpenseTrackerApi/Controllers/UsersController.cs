@@ -48,7 +48,7 @@ namespace ExpenseTracketApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login([FromBody] UsersModel user)
+        public IActionResult Login([FromBody] UserLoginModel user)
         {
             var userData = _userRepository.Login(user);
             if (userData != null)

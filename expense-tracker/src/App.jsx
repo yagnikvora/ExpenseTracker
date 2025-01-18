@@ -13,6 +13,7 @@ import Users from './Pages/Users'
 import AddEditTransactions from './Pages/AddEditTransactions'
 import AddEditBudget from './Pages/AddEditBudget'
 import Category from './Pages/Category'
+import { Logout } from './Pages/logout'
 function App() {
   return (
     <>
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<Home />}/>
           <Route path="/signup" element={<Signup />}/>
           <Route path="/login" element={<Login />}/>
+          <Route path="/logout" element={<Logout />}/>
           <Route path="/dashboard" element={<Dashboard />}/>
           <Route path="/transactions" element={<Transactions />}/>
           <Route path="/transactions/addedittransaction" element={<AddEditTransactions />}/>

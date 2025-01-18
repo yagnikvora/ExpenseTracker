@@ -1,7 +1,17 @@
+import { Navigate, useNavigate } from "react-router-dom";
+import { useAuth } from "../store/auth"
+
 const Users = () => {
-    return (
-        <h1>Hello</h1>
-    )
+    const {isLoggedIn} = useAuth();
+    console.log(isLoggedIn)
+    if(!isLoggedIn){
+        return <Navigate to="/" />
+    }
+    else{
+        return (
+            <h1>Hello</h1>
+        )
+    }
 }
 
 export default Users

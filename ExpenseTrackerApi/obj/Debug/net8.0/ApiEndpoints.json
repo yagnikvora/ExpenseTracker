@@ -429,7 +429,7 @@
     "Parameters": [
       {
         "Name": "user",
-        "Type": "ExpenseTracketApi.Models.UsersModel",
+        "Type": "ExpenseTracketApi.Models.UserLoginModel",
         "IsRequired": true
       }
     ],

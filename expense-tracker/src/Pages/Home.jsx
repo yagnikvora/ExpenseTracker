@@ -1,4 +1,14 @@
+import { useEffect, useState } from "react";
+import { useAuth } from "../store/auth"
+import { Link } from "react-router-dom";
+
 const Home = () =>{
+  const {isLoggedIn} = useAuth();
+  const [user,setUser] = useState({});
+  useEffect(()=>{
+    setUser(JSON.parse(localStorage.getItem('userData')))
+  },[])
+  console.log("User:",user)
     return (
       
       <main className="flex-grow-1">
@@ -9,7 +19,10 @@ const Home = () =>{
               <div className="col-lg-6">
                 <h1 className="display-4 fw-bold mb-3">Take Control of Your Expances</h1>
                 <p className="lead mb-4">ExpenseTracker helps you manage your money effortlessly. Track expenses, set budgets, and achieve your financial goals.</p>
-                <a href="/signup" className="btn btn-primary btn-lg me-3">Get Started</a>
+                {isLoggedIn 
+                ? <h2 className="lead mb-4">Welcome {user.name}</h2> 
+                : <Link to="/signup" className="btn btn-primary btn-lg me-3">Get Started</Link>}
+                
               </div>
               <div className="col-lg-6">
                 <img src="src\assets\Expance.jpg"  alt="Expense Tracking Dashboard" className="img-fluid rounded shadow-lg" />
@@ -96,9 +109,14 @@ const Home = () =>{
         {/* CTA Section */}
         <section className="bg-primary text-white py-5">
           <div className="container text-center">
-            <h2 className="mb-4">Ready to Take Control of Your Finances?</h2>
+            <h2 className="mb-4 text-white">Ready to Take Control of Your Finances?</h2>
             <p className="lead mb-4">Join thousands of users who have already transformed their financial lives with ExpenseTracker.</p>
-            <a href="/signup" className="btn btn-light btn-lg">Get Started</a>
+            {isLoggedIn 
+                ? <Link to="/dashboard" className="btn btn-light btn-lg">Go to Dashboard</Link> 
+                : <Link to="/signup" className="btn btn-light btn-lg">Get Started</Link>}
+
+            
+            
           </div>
         </section>
       </main>

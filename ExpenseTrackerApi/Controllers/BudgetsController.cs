@@ -1,5 +1,6 @@
 ﻿using ExpenseTracketApi.Data;
 using ExpenseTracketApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace ExpenseTracketApi.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class BudgetsController : ControllerBase
     {
         private readonly BudgetsRepository _budgetRepository;

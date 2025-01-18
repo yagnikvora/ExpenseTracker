@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Reflection;
+using static ExpenseTracketApi.Models.UserLoginModel;
 
 namespace ExpenseTracketApi.Data
 {
@@ -44,7 +45,7 @@ namespace ExpenseTracketApi.Data
         }
         #endregion
 
-        public UsersModel Login(UsersModel user)
+        public UsersModel Login(UserLoginModel user)
         {
             UsersModel userData = null;
             string connectionString = _configuration.GetConnectionString("myConnectionString");
@@ -65,6 +66,8 @@ namespace ExpenseTracketApi.Data
                     Email = reader["Email"].ToString(),
                     Mobile = reader["Mobile"].ToString(),
                     PasswordHash = reader["PasswordHash"].ToString(),
+                    CreatedAt = Convert.ToDateTime(reader["CreatedAt"]),
+                    ModifiedAt = Convert.ToDateTime(reader["ModifiedAt"])
                 };
             }
             return userData;

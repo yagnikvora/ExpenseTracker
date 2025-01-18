@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useAuth } from "../store/auth";
 
 const apiUrl = "http://localhost:5000/api/";
 
 const AddEditTransactions = () => {
     const { tid } = useParams();
+    const { isLoggedIn , authorizationToken } = useAuth();
     const navigate = useNavigate();
 
     const [categories, setCategories] = useState([]);
@@ -66,7 +68,12 @@ const AddEditTransactions = () => {
 
     useEffect(() => {
         if (tid) {
-            fetch(apiUrl + "Transactions/GetAllTransactionsByID/" + tid)
+            fetch(apiUrl + "Transactions/GetAllTransactionsByID/" + tid, {
+                method: "GET",
+                headers: {
+                    Authorization: authorizationToken,
+                },
+            })
                 .then((res) => res.json())
                 .then((res) => {
                     setFormData({
@@ -81,15 +88,30 @@ const AddEditTransactions = () => {
                 });
         }
 
-        fetch(apiUrl + "Categories/CategoriesDropdown")
+        fetch(apiUrl + "Categories/CategoriesDropdown", {
+            method: "GET",
+            headers: {
+                Authorization: authorizationToken,
+            },
+        })
             .then((response) => response.json())
             .then((data) => setCategories(data));
 
-        fetch(apiUrl + "Users/UsersDropdown")
+        fetch(apiUrl + "Users/UsersDropdown",  {
+            method: "GET",
+            headers: {
+                Authorization: authorizationToken,
+            },
+        })
             .then((response) => response.json())
             .then((data) => setUsers(data));
 
-        fetch(apiUrl + "PaymentMethods/PaymentMethodsDropdown")
+        fetch(apiUrl + "PaymentMethods/PaymentMethodsDropdown",  {
+            method: "GET",
+            headers: {
+                Authorization: authorizationToken,
+            },
+        })
             .then((response) => response.json())
             .then((data) => setPaymentMethods(data));
     }, [tid]);
@@ -141,20 +163,19 @@ const AddEditTransactions = () => {
             if (tid) {
                 fetch(apiUrl + "Transactions/UpdateTransactions/" + tid, {
                     body: JSON.stringify(formData),
-                    headers: { "Content-Type": "application/json" },
+                    headers: { "Content-Type": "application/json" ,  Authorization: authorizationToken,},
                     method: "PUT",
                 }).then(() => navigate("/transactions"));
             } else {
                 const { TransactionId, ...rest } = formData;
                 fetch(apiUrl + "Transactions/InsertTransactions", {
                     body: JSON.stringify(rest),
-                    headers: { "Content-Type": "application/json" },
+                    headers: { "Content-Type": "application/json" ,  Authorization: authorizationToken,},
                     method: "POST",
                 }).then(() => navigate("/transactions"));
             }
         }
-    };
-
+    };  
     const handleReset = () => {
         setFormData({
             TransactionId: "",
@@ -183,154 +204,160 @@ const AddEditTransactions = () => {
         });
     };
 
-    return (
-        <div className="container my-5">
-            <div className="card">
-                <div className="card-header bg-primary text-white">
-                    <h3 className="mb-0">{tid > 0 ? "Edit" : "Add"} Transaction</h3>
-                </div>
-                <div className="card-body">
-                    <form onSubmit={handleSubmit}>
-                        {/* Username Dropdown */}
-                        <div className="mb-3">
-                            <label htmlFor="UserId" className="form-label">
-                                <strong>Username:</strong>
-                            </label>
-                            <select
-                                id="UserId"
-                                name="UserId"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={formData.UserId}
-                                className={`form-select ${errors.UserId ? "is-invalid" : ""}`}
-                            >
-                                <option value="" disabled>Select User</option>
-                                {users.map((u) => (
-                                    <option key={u.userId} value={u.userId}>
-                                        {u.name}
-                                    </option>
-                                ))}
-                            </select>
-                            {errors.UserId && <div className="invalid-feedback">{errors.UserId}</div>}
-                        </div>
+    if (!isLoggedIn) {
+        return <Navigate to="/" />
+    }
+    else {
+
+        return (
+            <div className="container my-5">
+                <div className="card">
+                    <div className="card-header bg-primary text-white">
+                        <h3 className="mb-0">{tid > 0 ? "Edit" : "Add"} Transaction</h3>
+                    </div>
+                    <div className="card-body">
+                        <form onSubmit={handleSubmit}>
+                            {/* Username Dropdown */}
+                            <div className="mb-3">
+                                <label htmlFor="UserId" className="form-label">
+                                    <strong>Username:</strong>
+                                </label>
+                                <select
+                                    id="UserId"
+                                    name="UserId"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={formData.UserId}
+                                    className={`form-select ${errors.UserId ? "is-invalid" : ""}`}
+                                >
+                                    <option value="" disabled>Select User</option>
+                                    {users.map((u) => (
+                                        <option key={u.userId} value={u.userId}>
+                                            {u.name}
+                                        </option>
+                                    ))}
+                                </select>
+                                {errors.UserId && <div className="invalid-feedback">{errors.UserId}</div>}
+                            </div>
 
 
-                        {/* Category Type Dropdown */}
-                        <div className="mb-3">
-                            <label htmlFor="CategoryId" className="form-label">
-                                <strong>Category Type:</strong>
-                            </label>
-                            <select
-                                id="CategoryId"
-                                name="CategoryId"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={formData.CategoryId}
-                                className={`form-select ${errors.CategoryId ? "is-invalid" : ""}`}
-                            >
-                                <option value="" disabled>Select Category</option>
-                                {categories.map((c) => (
-                                    <option key={c.categoryId} value={c.categoryId}>
-                                        {c.categoryName}
-                                    </option>
-                                ))}
-                            </select>
-                            {errors.CategoryId && <div className="invalid-feedback">{errors.CategoryId}</div>}
-                        </div>
+                            {/* Category Type Dropdown */}
+                            <div className="mb-3">
+                                <label htmlFor="CategoryId" className="form-label">
+                                    <strong>Category Type:</strong>
+                                </label>
+                                <select
+                                    id="CategoryId"
+                                    name="CategoryId"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={formData.CategoryId}
+                                    className={`form-select ${errors.CategoryId ? "is-invalid" : ""}`}
+                                >
+                                    <option value="" disabled>Select Category</option>
+                                    {categories.map((c) => (
+                                        <option key={c.categoryId} value={c.categoryId}>
+                                            {c.categoryName}
+                                        </option>
+                                    ))}
+                                </select>
+                                {errors.CategoryId && <div className="invalid-feedback">{errors.CategoryId}</div>}
+                            </div>
 
-                        {/* Payment Method Dropdown */}
-                        <div className="mb-3">
-                            <label htmlFor="PaymentMethodId" className="form-label">
-                                <strong>Payment Method:</strong>
-                            </label>
-                            <select
-                                id="PaymentMethodId"
-                                name="PaymentMethodId"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={formData.PaymentMethodId}
-                                className={`form-select ${errors.PaymentMethodId ? "is-invalid" : ""}`}
-                            >
-                                <option value="" disabled>Select Payment Method</option>
-                                {paymentMethods.map((p) => (
-                                    <option key={p.paymentMethodId} value={p.paymentMethodId}>
-                                        {p.methodName}
-                                    </option>
-                                ))}
-                            </select>
-                            {errors.PaymentMethodId && <div className="invalid-feedback">{errors.PaymentMethodId}</div>}
-                        </div>
+                            {/* Payment Method Dropdown */}
+                            <div className="mb-3">
+                                <label htmlFor="PaymentMethodId" className="form-label">
+                                    <strong>Payment Method:</strong>
+                                </label>
+                                <select
+                                    id="PaymentMethodId"
+                                    name="PaymentMethodId"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={formData.PaymentMethodId}
+                                    className={`form-select ${errors.PaymentMethodId ? "is-invalid" : ""}`}
+                                >
+                                    <option value="" disabled>Select Payment Method</option>
+                                    {paymentMethods.map((p) => (
+                                        <option key={p.paymentMethodId} value={p.paymentMethodId}>
+                                            {p.methodName}
+                                        </option>
+                                    ))}
+                                </select>
+                                {errors.PaymentMethodId && <div className="invalid-feedback">{errors.PaymentMethodId}</div>}
+                            </div>
 
-                        {/* TransactionAmount Input */}
-                        <div className="mb-3">
-                            <label htmlFor="TransactionAmount" className="form-label">
-                                <strong>Transaction Amount:</strong>
-                            </label>
-                            <input
-                                type="number"
-                                id="TransactionAmount"
-                                name="TransactionAmount"
-                                value={formData.TransactionAmount}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                className={`form-control ${errors.TransactionAmount ? "is-invalid" : ""}`}
-                                placeholder="Enter Transaction Amount"
-                                required
-                            />
-                            {errors.TransactionAmount && (<div className="invalid-feedback">{errors.TransactionAmount}</div>)}
+                            {/* TransactionAmount Input */}
+                            <div className="mb-3">
+                                <label htmlFor="TransactionAmount" className="form-label">
+                                    <strong>Transaction Amount:</strong>
+                                </label>
+                                <input
+                                    type="number"
+                                    id="TransactionAmount"
+                                    name="TransactionAmount"
+                                    value={formData.TransactionAmount}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    className={`form-control ${errors.TransactionAmount ? "is-invalid" : ""}`}
+                                    placeholder="Enter Transaction Amount"
+                                    required
+                                />
+                                {errors.TransactionAmount && (<div className="invalid-feedback">{errors.TransactionAmount}</div>)}
 
-                        </div>
+                            </div>
 
-                        {/* TransactionDate Input */}
-                        <div className="mb-3">
-                            <label htmlFor="TransactionDate" className="form-label">
-                                <strong>Transaction Date:</strong>
-                            </label>
-                            <input
-                                type="date"
-                                id="TransactionDate"
-                                name="TransactionDate"
-                                value={formData.TransactionDate}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                className={`form-control ${errors.TransactionDate ? "is-invalid" : ""}`}
-                                required
-                            />
-                            {errors.TransactionDate && (<div className="invalid-feedback">{errors.TransactionDate}</div>)}
+                            {/* TransactionDate Input */}
+                            <div className="mb-3">
+                                <label htmlFor="TransactionDate" className="form-label">
+                                    <strong>Transaction Date:</strong>
+                                </label>
+                                <input
+                                    type="date"
+                                    id="TransactionDate"
+                                    name="TransactionDate"
+                                    value={formData.TransactionDate}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    className={`form-control ${errors.TransactionDate ? "is-invalid" : ""}`}
+                                    required
+                                />
+                                {errors.TransactionDate && (<div className="invalid-feedback">{errors.TransactionDate}</div>)}
 
-                        </div>
+                            </div>
 
-                        {/* TransactionNotes Textarea */}
-                        <div className="mb-3">
-                            <label htmlFor="TransactionNotes" className="form-label">
-                                <strong>Transaction Notes:</strong>
-                            </label>
-                            <textarea
-                                id="TransactionNotes"
-                                name="TransactionNotes"
-                                value={formData.TransactionNotes}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                className={`form-control ${errors.TransactionNotes ? "is-invalid" : ""}`}
-                                rows="3"
-                                placeholder="Add Transaction Notes"
-                            />
-                            {errors.TransactionNotes && (<div className="invalid-feedback">{errors.TransactionNotes}</div>)}
+                            {/* TransactionNotes Textarea */}
+                            <div className="mb-3">
+                                <label htmlFor="TransactionNotes" className="form-label">
+                                    <strong>Transaction Notes:</strong>
+                                </label>
+                                <textarea
+                                    id="TransactionNotes"
+                                    name="TransactionNotes"
+                                    value={formData.TransactionNotes}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    className={`form-control ${errors.TransactionNotes ? "is-invalid" : ""}`}
+                                    rows="3"
+                                    placeholder="Add Transaction Notes"
+                                />
+                                {errors.TransactionNotes && (<div className="invalid-feedback">{errors.TransactionNotes}</div>)}
 
-                        </div>
+                            </div>
 
-                        {/* Buttons */}
-                        <button type="submit" className={tid > 0 ? "btn btn-warning" : "btn btn-primary"}>
-                            {tid > 0 ? "Edit" : "Submit"}
-                        </button>
-                        <button type="button" onClick={handleReset} className="ms-3 btn btn-secondary">
-                            Reset
-                        </button>
-                    </form>
+                            {/* Buttons */}
+                            <button type="submit" className={tid > 0 ? "btn btn-warning" : "btn btn-primary"}>
+                                {tid > 0 ? "Edit" : "Submit"}
+                            </button>
+                            <button type="button" onClick={handleReset} className="ms-3 btn btn-secondary">
+                                Reset
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 };
 
 export default AddEditTransactions;

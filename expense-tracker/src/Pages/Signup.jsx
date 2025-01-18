@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useAuth } from "../store/auth";
 
 const Signup = () => {
+  const { isLoggedIn } = useAuth();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -85,115 +87,119 @@ const Signup = () => {
     }
   };
 
+  if (isLoggedIn) {
+    return <Navigate to="/" />
+  }
+  else {
+    return (
+      <div className="container-fluid">
+        <section className="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+          <div className="container-fluid">
+            <div className="row justify-content-center">
+              <div className="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                <div className="card mb-3 w-100">
+                  <div className="card-body">
 
-  return (
-    <div className="container-fluid">
-      <section className="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
-        <div className="container-fluid">
-          <div className="row justify-content-center">
-            <div className="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
-              <div className="card mb-3 w-100">
-                <div className="card-body">
+                    <div className="pt-4 pb-2">
+                      <h5 className="card-title text-center pb-0 fs-4">Create an Account</h5>
+                      <p className="text-center small">Enter your personal details to create account</p>
+                    </div>
 
-                  <div className="pt-4 pb-2">
-                    <h5 className="card-title text-center pb-0 fs-4">Create an Account</h5>
-                    <p className="text-center small">Enter your personal details to create account</p>
+                    <form onSubmit={handleSubmit}>
+
+                      <div className="mb-3">
+                        <label htmlFor="username" className="form-label">Username <span className="text-danger">*</span></label>
+                        <input
+                          type="text"
+                          className={`form-control ${errors.username ? 'is-invalid' : ''}`}
+                          id="username"
+                          name="username"
+                          value={formData.username}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          required
+                        />
+                        {errors.username && <div className="invalid-feedback">{errors.username}</div>}
+                      </div>
+
+                      <div className="mb-3">
+                        <label htmlFor="email" className="form-label">Email address <span className="text-danger">*</span></label>
+                        <input
+                          type="email"
+                          className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                          id="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          required
+                        />
+                        {errors.email && <div className="invalid-feedback">{errors.email}</div>}
+                      </div>
+
+                      <div className="mb-3">
+                        <label htmlFor="phone" className="form-label">Phone number <span className="text-danger">*</span></label>
+                        <input
+                          type="tel"
+                          className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
+                          id="phone"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          required
+                        />
+                        {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
+                      </div>
+
+                      <div className="mb-3">
+                        <label htmlFor="password" className="form-label">Password <span className="text-danger">*</span></label>
+                        <input
+                          type="password"
+                          className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                          id="password"
+                          name="password"
+                          value={formData.password}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          required
+                        />
+                        {errors.password && <div className="invalid-feedback">{errors.password}</div>}
+                      </div>
+
+                      <div className="mb-3">
+                        <input
+                          type="checkbox"
+                          className="form-check-input me-2"
+                          id="acceptTerms"
+                          name="acceptTerms"
+                          required
+                        />
+                        <label className="form-check-label d-inline" htmlFor="acceptTerms" >I agree and accept the <Link to="" href="#">terms and conditions</Link></label>
+                      </div>
+
+                      <div className="d-grid">
+                        <button type="submit" className="btn btn-primary">Sign Up</button>
+                      </div>
+
+                      <div className="col-12 my-1">
+                        <p className="small mb-0">Already have an account? <Link to="/login" >Log in</Link></p>
+                      </div>
+
+                    </form>
                   </div>
-
-                  <form onSubmit={handleSubmit}>
-
-                    <div className="mb-3">
-                      <label htmlFor="username" className="form-label">Username <span className="text-danger">*</span></label>
-                      <input
-                        type="text"
-                        className={`form-control ${errors.username ? 'is-invalid' : ''}`}
-                        id="username"
-                        name="username"
-                        value={formData.username}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        required
-                      />
-                      {errors.username && <div className="invalid-feedback">{errors.username}</div>}
-                    </div>
-
-                    <div className="mb-3">
-                      <label htmlFor="email" className="form-label">Email address <span className="text-danger">*</span></label>
-                      <input
-                        type="email"
-                        className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        required
-                      />
-                      {errors.email && <div className="invalid-feedback">{errors.email}</div>}
-                    </div>
-
-                    <div className="mb-3">
-                      <label htmlFor="phone" className="form-label">Phone number <span className="text-danger">*</span></label>
-                      <input
-                        type="tel"
-                        className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        required
-                      />
-                      {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
-                    </div>
-
-                    <div className="mb-3">
-                      <label htmlFor="password" className="form-label">Password <span className="text-danger">*</span></label>
-                      <input
-                        type="password"
-                        className={`form-control ${errors.password ? 'is-invalid' : ''}`}
-                        id="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        required
-                      />
-                      {errors.password && <div className="invalid-feedback">{errors.password}</div>}
-                    </div>
-
-                    <div className="mb-3">
-                      <input
-                        type="checkbox"
-                        className="form-check-input me-2"
-                        id="acceptTerms"
-                        name="acceptTerms"
-                        required
-                      />
-                      <label className="form-check-label d-inline" htmlFor="acceptTerms" >I agree and accept the <Link to="" href="#">terms and conditions</Link></label>
-                    </div>
-
-                    <div className="d-grid">
-                      <button type="submit" className="btn btn-primary">Sign Up</button>
-                    </div>
-
-                    <div className="col-12 my-1">
-                      <p className="small mb-0">Already have an account? <Link to="/login" >Log in</Link></p>
-                    </div>
-
-                  </form>
                 </div>
+
+
               </div>
-
-
             </div>
           </div>
-        </div>
 
-      </section>
+        </section>
 
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default Signup;
