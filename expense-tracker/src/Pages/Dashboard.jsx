@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useAuth } from '../store/auth';
+import { toast } from 'react-toastify';
 
 // Placeholder data for the chart
 const spendingData = [
@@ -29,7 +30,12 @@ const Dashboard = () => {
     const [expense, setExpense] = useState(1000);
     const [remainBudget, setRemainBudget] = useState((totalAmount + income - expense));
 
+    const toastId = "login-toast";
+
     if (!isLoggedIn) {
+        if (!toast.isActive(toastId)) {
+            toast.error("Please Login First", { toastId });
+          }
         return <Navigate to="/" />
     }
     else {

@@ -74,10 +74,23 @@ namespace ExpenseTracketApi.Controllers
                     );
 
                 string tockenValue = new JwtSecurityTokenHandler().WriteToken(token);
-                return Ok(new {Token = tockenValue, User = userData });
+                return Ok(new {Token = tockenValue, User = userData , Message = "User Login Successfully" });
             }
 
-            return BadRequest();
+            return BadRequest(new {Message = "Please enter valid Email and password"});
+        }
+
+        [HttpPost]
+        public IActionResult Register([FromBody] UsersModel user)
+        {
+            if (user == null)
+                return BadRequest(new { Message = "Users data is required." });
+
+            var isInserted = _userRepository.Register(user);
+            if (isInserted)
+                return Ok(new { Message = "Users Registred successfully." });
+            else
+                return StatusCode(500, new { Message = "Users could not be inserted." });
         }
 
         [HttpDelete("{UsersID}")]
@@ -88,19 +101,6 @@ namespace ExpenseTracketApi.Controllers
                 return Ok(new { Message = "Users deleted successfully." });
             else
                 return NotFound(new { Message = "Users not found or could not be deleted." });
-        }
-
-        [HttpPost]
-        public IActionResult InsertUsers([FromBody] UsersModel user)
-        {
-            if (user == null)
-                return BadRequest(new { Message = "Users data is required." });
-
-            var isInserted = _userRepository.InsertUsers(user);
-            if (isInserted)
-                return Ok(new { Message = "Users inserted successfully." });
-            else
-                return StatusCode(500, new { Message = "Users could not be inserted." });
         }
 
         [HttpPut("{UsersID}")]

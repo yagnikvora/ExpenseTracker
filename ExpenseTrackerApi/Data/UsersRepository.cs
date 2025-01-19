@@ -144,8 +144,8 @@ namespace ExpenseTracketApi.Data
         }
         #endregion
 
-        #region InsertUsers
-        public bool InsertUsers(UsersModel user)
+        #region Register
+        public bool Register(UsersModel user)
         {
             bool isInserted = false;
             string connectionString = _configuration.GetConnectionString("myConnectionString");

@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import './css/Category.css';
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
+import { toast } from "react-toastify";
 const apiUrl = 'http://localhost:5000/api/Categories';
 const Category = () => {
   const [categories, setCategory] = useState([]);
-  const {isLoggedIn , authorizationToken} = useAuth()
-  const fetchBudgets = () => {
-    fetch(apiUrl + "/GetAllCategories" , {
+  const {isLoggedIn , authorizationToken} = useAuth();
+  const toastId = "login-toast";
+  const  fetchBudgets =async () => {
+    await fetch(apiUrl + "/GetAllCategories" , {
       method: "GET",
       headers: {
           Authorization: authorizationToken,
@@ -21,6 +23,9 @@ const Category = () => {
   }, [])
 
   if (!isLoggedIn) {
+    if (!toast.isActive(toastId)) {
+      toast.error("Please Login First", { toastId });
+    }
     return <Navigate to="/" />
   }
   else {

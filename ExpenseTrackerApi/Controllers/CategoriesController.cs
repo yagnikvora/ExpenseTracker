@@ -31,6 +31,12 @@ namespace ExpenseTracketApi.Controllers
             var categoryList = _categoryRepository.CategoriesDropdown();
             return Ok(categoryList);
         }
+        [HttpGet]
+        public IActionResult CategoriesRemainDropdown()
+        {
+            var categoryList = _categoryRepository.CategoriesRemainDropdown();
+            return Ok(categoryList);
+        }
 
 
         [HttpGet("{CategoryID}")]

@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../store/auth";
+import { toast } from "react-toastify";
 
 const apiUrl = "http://localhost:5000/api/";
 
 const AddEditTransactions = () => {
     const { tid } = useParams();
-    const { isLoggedIn , authorizationToken } = useAuth();
+    const { isLoggedIn, authorizationToken } = useAuth();
     const navigate = useNavigate();
+
+    const [logedInUser, setLogedInUser] = useState(JSON.parse(localStorage.getItem('userData')));
 
     const [categories, setCategories] = useState([]);
     const [paymentMethods, setPaymentMethods] = useState([]);
     const [users, setUsers] = useState([]);
     const [formData, setFormData] = useState({
         TransactionId: "",
-        UserId: "",
+        UserId: logedInUser.userId,
         CategoryId: "",
         PaymentMethodId: "",
         TransactionAmount: "",
@@ -97,7 +100,7 @@ const AddEditTransactions = () => {
             .then((response) => response.json())
             .then((data) => setCategories(data));
 
-        fetch(apiUrl + "Users/UsersDropdown",  {
+        fetch(apiUrl + "Users/UsersDropdown", {
             method: "GET",
             headers: {
                 Authorization: authorizationToken,
@@ -106,7 +109,7 @@ const AddEditTransactions = () => {
             .then((response) => response.json())
             .then((data) => setUsers(data));
 
-        fetch(apiUrl + "PaymentMethods/PaymentMethodsDropdown",  {
+        fetch(apiUrl + "PaymentMethods/PaymentMethodsDropdown", {
             method: "GET",
             headers: {
                 Authorization: authorizationToken,
@@ -143,7 +146,7 @@ const AddEditTransactions = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const allTouched = Object.fromEntries(
@@ -161,21 +164,35 @@ const AddEditTransactions = () => {
 
         if (Object.values(newErrors).every((error) => error === "")) {
             if (tid) {
-                fetch(apiUrl + "Transactions/UpdateTransactions/" + tid, {
+                const response = await fetch(apiUrl + "Transactions/UpdateTransactions/" + tid, {
                     body: JSON.stringify(formData),
-                    headers: { "Content-Type": "application/json" ,  Authorization: authorizationToken,},
+                    headers: { "Content-Type": "application/json", Authorization: authorizationToken, },
                     method: "PUT",
-                }).then(() => navigate("/transactions"));
+                });
+
+                const responseData = await response.json();
+
+                if (response.ok) {
+                    toast.warning(responseData.message)
+                    navigate("/transactions")
+                }
             } else {
                 const { TransactionId, ...rest } = formData;
-                fetch(apiUrl + "Transactions/InsertTransactions", {
+                const response = await fetch(apiUrl + "Transactions/InsertTransactions", {
                     body: JSON.stringify(rest),
-                    headers: { "Content-Type": "application/json" ,  Authorization: authorizationToken,},
+                    headers: { "Content-Type": "application/json", Authorization: authorizationToken, },
                     method: "POST",
-                }).then(() => navigate("/transactions"));
+                });
+
+                const responseData = await response.json();
+
+                if (response.ok) {
+                    toast.success(responseData.message)
+                    navigate("/transactions")
+                }
             }
         }
-    };  
+    };
     const handleReset = () => {
         setFormData({
             TransactionId: "",
@@ -228,7 +245,15 @@ const AddEditTransactions = () => {
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     value={formData.UserId}
+                                    style={{
+                                        WebkitAppearance: "none",
+                                        MozAppearance: "none",
+                                        appearance: "none",
+                                        background: "lightgray",
+                                        paddingRight: "20px", 
+                                    }}
                                     className={`form-select ${errors.UserId ? "is-invalid" : ""}`}
+                                    disabled
                                 >
                                     <option value="" disabled>Select User</option>
                                     {users.map((u) => (
@@ -239,8 +264,7 @@ const AddEditTransactions = () => {
                                 </select>
                                 {errors.UserId && <div className="invalid-feedback">{errors.UserId}</div>}
                             </div>
-
-
+                                                        
                             {/* Category Type Dropdown */}
                             <div className="mb-3">
                                 <label htmlFor="CategoryId" className="form-label">

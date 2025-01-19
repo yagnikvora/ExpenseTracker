@@ -1,40 +1,42 @@
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
+import { toast } from "react-toastify";
 
 const Signup = () => {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn , authorizationToken } = useAuth();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    phone: '',
-    password: '',
+    Name: '',
+    Email: '',
+    Mobile: '',
+    PasswordHash: '',
   });
 
   const [touched, setTouched] = useState({
-    username: false,
-    email: false,
-    phone: false,
-    password: false,
+    Name: false,
+    Email: false,
+    Mobile: false,
+    PasswordHash: false,
   });
 
   const [errors, setErrors] = useState({
-    username: '',
-    email: '',
-    phone: '',
-    password: '',
+    Name: '',
+    Email: '',
+    Mobile: '',
+    PasswordHash: '',
   });
 
   const validateField = (name, value) => {
     switch (name) {
-      case 'username':
-        return value.trim() ? '' : 'Username is required';
-      case 'email':
+      case 'Name':
+        return value.trim() ? '' : 'Name is required';
+      case 'Email':
         return value.trim() ? (/\S+@\S+\.\S+/.test(value) ? '' : 'Email is invalid') : 'Email is required';
-      case 'phone':
-        return value.trim() ? (/^\d{10}$/.test(value) ? '' : 'Phone number is invalid (only 10 digits required)') : 'Phone number is required';
-      case 'password':
-        return value ? (value.length >= 6 ? '' : 'Password must be at least 6 characters long') : 'Password is required';
+      case 'Mobile':
+        return value.trim() ? (/^\d{10}$/.test(value) ? '' : 'Mobile number is invalid (only 10 digits required)') : 'Mobile number is required';
+      case 'PasswordHash':
+        return value ? (value.length >= 6 ? '' : 'PasswordHash must be at least 6 characters long') : 'PasswordHash is required';
       default:
         return '';
     }
@@ -67,7 +69,7 @@ const Signup = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const touchedAll = Object.fromEntries(
       Object.keys(touched).map(key => [key, true])
@@ -80,10 +82,22 @@ const Signup = () => {
     setErrors(newErrors);
 
     if (Object.values(newErrors).every(error => error === '')) {
-      console.log('Signup Form submitted:', formData);
-      setFormData({ username: '', email: '', phone: '', password: '' });
-      setTouched({ username: false, email: false, phone: false, password: false });
-      setErrors({ username: '', email: '', phone: '', password: '' });
+      const response = await fetch("http://localhost:5000/api/Users/Register",{
+        method : "POST",
+        headers :{
+          "Content-Type" : "application/json",
+          Authorization : authorizationToken
+        },
+        body : JSON.stringify(formData)
+      })
+      const data = await response.json();
+      if(response.ok){
+        toast.success(data.message);
+        navigate("/login");
+      }
+      setFormData({ Name: '', Email: '', Mobile: '', PasswordHash: '' });
+      setTouched({ Name: false, Email: false, Mobile: false, PasswordHash: false });
+      setErrors({ Name: '', Email: '', Mobile: '', PasswordHash: '' });
     }
   };
 
@@ -108,63 +122,63 @@ const Signup = () => {
                     <form onSubmit={handleSubmit}>
 
                       <div className="mb-3">
-                        <label htmlFor="username" className="form-label">Username <span className="text-danger">*</span></label>
+                        <label htmlFor="Name" className="form-label">Name <span className="text-danger">*</span></label>
                         <input
                           type="text"
-                          className={`form-control ${errors.username ? 'is-invalid' : ''}`}
-                          id="username"
-                          name="username"
-                          value={formData.username}
+                          className={`form-control ${errors.Name ? 'is-invalid' : ''}`}
+                          id="Name"
+                          name="Name"
+                          value={formData.Name}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           required
                         />
-                        {errors.username && <div className="invalid-feedback">{errors.username}</div>}
+                        {errors.Name && <div className="invalid-feedback">{errors.Name}</div>}
                       </div>
 
                       <div className="mb-3">
-                        <label htmlFor="email" className="form-label">Email address <span className="text-danger">*</span></label>
+                        <label htmlFor="Email" className="form-label">Email address <span className="text-danger">*</span></label>
                         <input
                           type="email"
-                          className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-                          id="email"
-                          name="email"
-                          value={formData.email}
+                          className={`form-control ${errors.Email ? 'is-invalid' : ''}`}
+                          id="Email"
+                          name="Email"
+                          value={formData.Email}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           required
                         />
-                        {errors.email && <div className="invalid-feedback">{errors.email}</div>}
+                        {errors.Email && <div className="invalid-feedback">{errors.Email}</div>}
                       </div>
 
                       <div className="mb-3">
-                        <label htmlFor="phone" className="form-label">Phone number <span className="text-danger">*</span></label>
+                        <label htmlFor="Mobile" className="form-label">Mobile number <span className="text-danger">*</span></label>
                         <input
                           type="tel"
-                          className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
-                          id="phone"
-                          name="phone"
-                          value={formData.phone}
+                          className={`form-control ${errors.Mobile ? 'is-invalid' : ''}`}
+                          id="Mobile"
+                          name="Mobile"
+                          value={formData.Mobile}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           required
                         />
-                        {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
+                        {errors.Mobile && <div className="invalid-feedback">{errors.Mobile}</div>}
                       </div>
 
                       <div className="mb-3">
-                        <label htmlFor="password" className="form-label">Password <span className="text-danger">*</span></label>
+                        <label htmlFor="PasswordHash" className="form-label">PasswordHash <span className="text-danger">*</span></label>
                         <input
                           type="password"
-                          className={`form-control ${errors.password ? 'is-invalid' : ''}`}
-                          id="password"
-                          name="password"
-                          value={formData.password}
+                          className={`form-control ${errors.PasswordHash ? 'is-invalid' : ''}`}
+                          id="PasswordHash"
+                          name="PasswordHash"
+                          value={formData.PasswordHash}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           required
                         />
-                        {errors.password && <div className="invalid-feedback">{errors.password}</div>}
+                        {errors.PasswordHash && <div className="invalid-feedback">{errors.PasswordHash}</div>}
                       </div>
 
                       <div className="mb-3">

@@ -2,14 +2,16 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import './css/Budget.css';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../store/auth';
+import { toast } from 'react-toastify';
 const apiUrl = "http://localhost:5000/api/Budgets"
 const Budgets = () => {
   const { isLoggedIn , authorizationToken } = useAuth();
 
-  const [budget, setBudget] = useState([]);
+  const [budget, setBudget] = useState([]); 
+  const toastId = "login-toast";
   const navigate = useNavigate()
-  const fetchBudgets = () => {
-    fetch(apiUrl + "/GetAllBudgets", {
+  const fetchBudgets = async () => {
+    await fetch(apiUrl + "/GetAllBudgets", {
       method: "GET",
       headers: {
         Authorization: authorizationToken,
@@ -30,6 +32,9 @@ const Budgets = () => {
   };
 
   if (!isLoggedIn) {
+    if (!toast.isActive(toastId)) {
+      toast.error("Please Login First", { toastId });
+    }
     return <Navigate to="/" />
   }
   else {
@@ -37,7 +42,7 @@ const Budgets = () => {
     return (
       <div className="container mt-4">
         <h2 className="text-center mb-4 ">Your Budget Overview</h2>
-        {/* <Link className="btn btn-success mb-3 ms-1" to="/budgets/addeditbudget">Add new Budget</Link> */}
+        <Link className="btn btn-success mb-3 ms-1" to="/budgets/addeditbudget">Add new Budget</Link>
 
         <div className="row">
           {budget.map((b) => (
@@ -61,16 +66,21 @@ const Budgets = () => {
                     <button className='btn btn-outline-success' onClick={() => {
                       navigate("/budgets/addeditbudget/" + b.budgetId)
                     }}>Edit</button>
-                    <button className="btn btn-outline-danger" onClick={() => {
+                    <button className="btn btn-outline-danger" onClick={async () => {
                       if (confirm("Do you want to delete Budget " + b.categoryName)) {
-                        fetch(apiUrl + "/DeleteBudgetsByID/" + b.budgetId, {
+                        const response = await fetch(apiUrl + "/DeleteBudgetsByID/" + b.budgetId, {
                           method: "DELETE",
                           headers: {
                             Authorization: authorizationToken,
                         },
-                        }).then(() => {
-                          fetchBudgets()
                         });
+
+                        const responseData = await response.json();
+
+                        if(response.ok){
+                          toast.error(b.categoryName+" "+responseData.message)
+                          fetchBudgets();
+                        }
                       }
                     }}>Delete</button>
                   </div>

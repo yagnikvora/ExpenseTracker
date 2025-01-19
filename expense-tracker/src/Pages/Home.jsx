@@ -8,7 +8,6 @@ const Home = () =>{
   useEffect(()=>{
     setUser(JSON.parse(localStorage.getItem('userData')))
   },[])
-  console.log("User:",user)
     return (
       
       <main className="flex-grow-1">

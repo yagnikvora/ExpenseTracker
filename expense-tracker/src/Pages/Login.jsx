@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
+import { toast } from "react-toastify";
 
 const Login = () => {
 
@@ -85,12 +86,16 @@ const Login = () => {
       const responseData = await response.json();
 
       if (response.ok) {
+        toast.success(responseData.message);
         storeUserInLS(responseData.user);
         storeTokenInLS(responseData.token);
         setFormData({ Email: '', PasswordHash: '' });
         setTouched({ Email: false, PasswordHash: false });
         setErrors({ Email: '', PasswordHash: '' });
         navigate("/dashboard")
+      }
+      else{
+        toast.error(responseData.message)
       }
 
     }

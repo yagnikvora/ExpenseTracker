@@ -2,15 +2,17 @@ import { useEffect, useState } from "react";
 import "./css/Transaction.css"
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
+import { toast } from "react-toastify";
 const apiUrl = 'http://localhost:5000/api/Transactions';
 const Transactions = () => {
   const {isLoggedIn} = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const toastId = "login-toast";
   const { authorizationToken } = useAuth();
   const [transaction, setTransaction] = useState([]);
 
-  const fetchTransactions = () => {
-    fetch(apiUrl + "/GetAllTransactions", {
+  const fetchTransactions =async () => {
+    await fetch(apiUrl + "/GetAllTransactions", {
       method: "GET",
       headers: {
         Authorization: authorizationToken,
@@ -20,7 +22,7 @@ const Transactions = () => {
       .then(res => setTransaction(res));
   }
   useEffect(() => {
-    fetchTransactions();
+   fetchTransactions();
   }, [])
 
   const formatDate = (dateString) => {
@@ -32,6 +34,9 @@ const Transactions = () => {
   };
 
   if (!isLoggedIn) {
+    if (!toast.isActive(toastId)) {
+      toast.error("Please Login First", { toastId });
+    }
     return <Navigate to="/" />
   }
   else {
@@ -64,16 +69,21 @@ const Transactions = () => {
                     <button className="btn btn-primary" onClick={() => { navigate("/transactions/addedittransaction/" + t.transactionId) }}>Edit</button>
                   </div>
                   <div className="col  d-flex justify-content-center">
-                    <button className="btn btn-danger" onClick={() => {
+                    <button className="btn btn-danger" onClick={async () => {
                       if (confirm("Do you want to delete Transaction " + t.transactionId)) {
-                        fetch(apiUrl + "/DeleteTransactionsByID/" + t.transactionId, {
+                        const response = await fetch(apiUrl + "/DeleteTransactionsByID/" + t.transactionId, {
                           method: "DELETE",
                           headers: {
                             Authorization: authorizationToken,
                         },
-                        }).then(() => {
-                          fetchTransactions()
                         });
+
+                        const responseData = await response.json();
+        
+                        if(response.ok){
+                            toast.error(responseData.message)
+                            fetchTransactions()
+                        }
                       }
                     }}>Delete</button>
                   </div>
