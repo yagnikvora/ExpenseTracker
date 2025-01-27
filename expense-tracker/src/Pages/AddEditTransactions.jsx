@@ -194,15 +194,16 @@ const AddEditTransactions = () => {
         }
     };
     const handleReset = () => {
-        setFormData({
+
+        setFormData((prevFormData)=>({
+            ...prevFormData,
             TransactionId: "",
-            UserId: "",
             CategoryId: "",
             PaymentMethodId: "",
             TransactionAmount: "",
             TransactionDate: "",
             TransactionNotes: "",
-        });
+        }));
         setTouched({
             UserId: false,
             CategoryId: false,
@@ -234,144 +235,151 @@ const AddEditTransactions = () => {
                     </div>
                     <div className="card-body">
                         <form onSubmit={handleSubmit}>
-                            {/* Username Dropdown */}
-                            <div className="mb-3">
-                                <label htmlFor="UserId" className="form-label">
-                                    <strong>Username:</strong>
-                                </label>
-                                <select
-                                    id="UserId"
-                                    name="UserId"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={formData.UserId}
-                                    style={{
-                                        WebkitAppearance: "none",
-                                        MozAppearance: "none",
-                                        appearance: "none",
-                                        background: "lightgray",
-                                        paddingRight: "20px", 
-                                    }}
-                                    className={`form-select ${errors.UserId ? "is-invalid" : ""}`}
-                                    disabled
-                                >
-                                    <option value="" disabled>Select User</option>
-                                    {users.map((u) => (
-                                        <option key={u.userId} value={u.userId}>
-                                            {u.name}
-                                        </option>
-                                    ))}
-                                </select>
-                                {errors.UserId && <div className="invalid-feedback">{errors.UserId}</div>}
-                            </div>
-                                                        
-                            {/* Category Type Dropdown */}
-                            <div className="mb-3">
-                                <label htmlFor="CategoryId" className="form-label">
-                                    <strong>Category Type:</strong>
-                                </label>
-                                <select
-                                    id="CategoryId"
-                                    name="CategoryId"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={formData.CategoryId}
-                                    className={`form-select ${errors.CategoryId ? "is-invalid" : ""}`}
-                                >
-                                    <option value="" disabled>Select Category</option>
-                                    {categories.map((c) => (
-                                        <option key={c.categoryId} value={c.categoryId}>
-                                            {c.categoryName}
-                                        </option>
-                                    ))}
-                                </select>
-                                {errors.CategoryId && <div className="invalid-feedback">{errors.CategoryId}</div>}
-                            </div>
+                            <div className="row">
 
-                            {/* Payment Method Dropdown */}
-                            <div className="mb-3">
-                                <label htmlFor="PaymentMethodId" className="form-label">
-                                    <strong>Payment Method:</strong>
-                                </label>
-                                <select
-                                    id="PaymentMethodId"
-                                    name="PaymentMethodId"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={formData.PaymentMethodId}
-                                    className={`form-select ${errors.PaymentMethodId ? "is-invalid" : ""}`}
-                                >
-                                    <option value="" disabled>Select Payment Method</option>
-                                    {paymentMethods.map((p) => (
-                                        <option key={p.paymentMethodId} value={p.paymentMethodId}>
-                                            {p.methodName}
-                                        </option>
-                                    ))}
-                                </select>
-                                {errors.PaymentMethodId && <div className="invalid-feedback">{errors.PaymentMethodId}</div>}
+                                {/* Username Dropdown */}
+                                <div className="mb-3 col">
+                                    <label htmlFor="UserId" className="form-label">
+                                        <strong>Username:</strong>
+                                    </label>
+                                    <select
+                                        id="UserId"
+                                        name="UserId"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={formData.UserId}
+                                        style={{
+                                            WebkitAppearance: "none",
+                                            MozAppearance: "none",
+                                            appearance: "none",
+                                            background: "lightgray",
+                                            paddingRight: "20px",
+                                        }}
+                                        className={`form-select ${errors.UserId ? "is-invalid" : ""}`}
+                                        disabled
+                                    >
+                                        <option value="" disabled>Select User</option>
+                                        {users.map((u) => (
+                                            <option key={u.userId} value={u.userId}>
+                                                {u.name}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    {errors.UserId && <div className="invalid-feedback">{errors.UserId}</div>}
+                                </div>
+
+                                {/* Category Type Dropdown */}
+                                <div className="mb-3 col">
+                                    <label htmlFor="CategoryId" className="form-label">
+                                        <strong>Category Type:</strong>
+                                    </label>
+                                    <select
+                                        id="CategoryId"
+                                        name="CategoryId"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={formData.CategoryId}
+                                        className={`form-select ${errors.CategoryId ? "is-invalid" : ""}`}
+                                    >
+                                        <option value="" disabled>Select Category</option>
+                                        {categories.map((c) => (
+                                            <option key={c.categoryId} value={c.categoryId}>
+                                                {c.categoryName}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    {errors.CategoryId && <div className="invalid-feedback">{errors.CategoryId}</div>}
+                                </div>
                             </div>
 
-                            {/* TransactionAmount Input */}
-                            <div className="mb-3">
-                                <label htmlFor="TransactionAmount" className="form-label">
-                                    <strong>Transaction Amount:</strong>
-                                </label>
-                                <input
-                                    type="number"
-                                    id="TransactionAmount"
-                                    name="TransactionAmount"
-                                    value={formData.TransactionAmount}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    className={`form-control ${errors.TransactionAmount ? "is-invalid" : ""}`}
-                                    placeholder="Enter Transaction Amount"
-                                    required
-                                />
-                                {errors.TransactionAmount && (<div className="invalid-feedback">{errors.TransactionAmount}</div>)}
+                            <div className="row">
+                                {/* Payment Method Dropdown */}
+                                <div className="mb-3 col">
+                                    <label htmlFor="PaymentMethodId" className="form-label">
+                                        <strong>Payment Method:</strong>
+                                    </label>
+                                    <select
+                                        id="PaymentMethodId"
+                                        name="PaymentMethodId"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={formData.PaymentMethodId}
+                                        className={`form-select ${errors.PaymentMethodId ? "is-invalid" : ""}`}
+                                    >
+                                        <option value="" disabled>Select Payment Method</option>
+                                        {paymentMethods.map((p) => (
+                                            <option key={p.paymentMethodId} value={p.paymentMethodId}>
+                                                {p.methodName}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    {errors.PaymentMethodId && <div className="invalid-feedback">{errors.PaymentMethodId}</div>}
+                                </div>
 
+                                {/* TransactionAmount Input */}
+                                <div className="mb-3 col">
+                                    <label htmlFor="TransactionAmount" className="form-label">
+                                        <strong>Transaction Amount:</strong>
+                                    </label>
+                                    <input
+                                        type="number"
+                                        id="TransactionAmount"
+                                        name="TransactionAmount"
+                                        value={formData.TransactionAmount}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className={`form-control ${errors.TransactionAmount ? "is-invalid" : ""}`}
+                                        placeholder="Enter Transaction Amount"
+                                        required
+                                    />
+                                    {errors.TransactionAmount && (<div className="invalid-feedback">{errors.TransactionAmount}</div>)}
+
+                                </div>
                             </div>
 
-                            {/* TransactionDate Input */}
-                            <div className="mb-3">
-                                <label htmlFor="TransactionDate" className="form-label">
-                                    <strong>Transaction Date:</strong>
-                                </label>
-                                <input
-                                    type="date"
-                                    id="TransactionDate"
-                                    name="TransactionDate"
-                                    value={formData.TransactionDate}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    className={`form-control ${errors.TransactionDate ? "is-invalid" : ""}`}
-                                    required
-                                />
-                                {errors.TransactionDate && (<div className="invalid-feedback">{errors.TransactionDate}</div>)}
+                            <div className="row">
+                                {/* TransactionNotes Textarea */}
+                                <div className="mb-3 col">
+                                    <label htmlFor="TransactionNotes" className="form-label">
+                                        <strong>Transaction Notes:</strong>
+                                    </label>
+                                    <textarea
+                                        id="TransactionNotes"
+                                        name="TransactionNotes"
+                                        value={formData.TransactionNotes}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className={`form-control ${errors.TransactionNotes ? "is-invalid" : ""}`}
+                                        rows="3"
+                                        placeholder="Add Transaction Notes"
+                                    />
+                                    {errors.TransactionNotes && (<div className="invalid-feedback">{errors.TransactionNotes}</div>)}
 
-                            </div>
+                                </div>
 
-                            {/* TransactionNotes Textarea */}
-                            <div className="mb-3">
-                                <label htmlFor="TransactionNotes" className="form-label">
-                                    <strong>Transaction Notes:</strong>
-                                </label>
-                                <textarea
-                                    id="TransactionNotes"
-                                    name="TransactionNotes"
-                                    value={formData.TransactionNotes}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    className={`form-control ${errors.TransactionNotes ? "is-invalid" : ""}`}
-                                    rows="3"
-                                    placeholder="Add Transaction Notes"
-                                />
-                                {errors.TransactionNotes && (<div className="invalid-feedback">{errors.TransactionNotes}</div>)}
+                                {/* TransactionDate Input */}
+                                <div className="mb-3 col">
+                                    <label htmlFor="TransactionDate" className="form-label">
+                                        <strong>Transaction Date:</strong>
+                                    </label>
+                                    <input
+                                        type="date"
+                                        id="TransactionDate"
+                                        name="TransactionDate"
+                                        value={formData.TransactionDate}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className={`form-control ${errors.TransactionDate ? "is-invalid" : ""}`}
+                                        required
+                                    />
+                                    {errors.TransactionDate && (<div className="invalid-feedback">{errors.TransactionDate}</div>)}
 
+                                </div>
                             </div>
 
                             {/* Buttons */}
                             <button type="submit" className={tid > 0 ? "btn btn-warning" : "btn btn-primary"}>
-                                {tid > 0 ? "Edit" : "Submit"}
+                                {tid > 0 ? "Update" : "Submit"}
                             </button>
                             <button type="button" onClick={handleReset} className="ms-3 btn btn-secondary">
                                 Reset

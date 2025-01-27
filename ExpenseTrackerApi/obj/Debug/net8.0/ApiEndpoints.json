@@ -116,6 +116,16 @@
   },
   {
     "ContainingType": "ExpenseTracketApi.Controllers.CategoriesController",
+    "Method": "CategoriesRemainDropdown",
+    "RelativePath": "api/Categories/CategoriesRemainDropdown",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpenseTracketApi.Controllers.CategoriesController",
     "Method": "DeleteCategoriesByID",
     "RelativePath": "api/Categories/DeleteCategoriesByID/{CategoryID}",
     "HttpMethod": "DELETE",
@@ -405,22 +415,6 @@
   },
   {
     "ContainingType": "ExpenseTracketApi.Controllers.UsersController",
-    "Method": "InsertUsers",
-    "RelativePath": "api/Users/InsertUsers",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "user",
-        "Type": "ExpenseTracketApi.Models.UsersModel",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ExpenseTracketApi.Controllers.UsersController",
     "Method": "Login",
     "RelativePath": "api/Users/Login",
     "HttpMethod": "POST",
@@ -430,6 +424,22 @@
       {
         "Name": "user",
         "Type": "ExpenseTracketApi.Models.UserLoginModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpenseTracketApi.Controllers.UsersController",
+    "Method": "Register",
+    "RelativePath": "api/Users/Register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "ExpenseTracketApi.Models.UsersModel",
         "IsRequired": true
       }
     ],

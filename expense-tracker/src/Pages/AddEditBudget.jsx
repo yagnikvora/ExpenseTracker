@@ -8,10 +8,12 @@ const apiUrl = "http://localhost:5000/api/";
 
 const AddEditBudget = () => {
     const { bid } = useParams();
+    console.log(bid)
     const navigate = useNavigate();
     const { isLoggedIn, authorizationToken } = useAuth();
     const [categories, setCategories] = useState([]);
     const [users, setUsers] = useState([]);
+    const [categoryName, setCategoryName] = useState();
 
     const [logedInUser, setLogedInUser] = useState(JSON.parse(localStorage.getItem('userData')));
 
@@ -86,6 +88,7 @@ const AddEditBudget = () => {
                         StartDate: res[0].startDate.split("T")[0],  // Format to YYYY-MM-DD
                         EndDate: res[0].endDate.split("T")[0],      // Format to YYYY-MM-DD
                     });
+                    setCategoryName(res[0].categoryName)
                 });
         }
 
@@ -184,14 +187,14 @@ const AddEditBudget = () => {
     };
 
     const handleReset = () => {
-        setFormData({
+        setFormData((prevFormData) => ({
+            ...prevFormData,
             BudgetId: "",
-            UserId: "",
             CategoryId: "",
             Amount: "",
             StartDate: "",
             EndDate: "",
-        });
+        }));
         setTouched({
             UserId: false,
             CategoryId: false,
@@ -218,126 +221,167 @@ const AddEditBudget = () => {
                     <div className="card-header bg-success text-white">
                         <h3 className="mb-0">{bid > 0 ? "Edit" : "Add"} Budget</h3>
                     </div>
-                    {categories.length != 0
+                    {categories.length != 0 || bid > 0
                         ?
                         <div className="card-body">
                             <form onSubmit={handleSubmit}>
-                                {/* Username Dropdown */}
-                                <div className="mb-3">
-                                    <label htmlFor="UserId" className="form-label">
-                                        <strong>Username:</strong>
-                                    </label>
-                                    <select
-                                        id="UserId"
-                                        name="UserId"
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        value={formData.UserId}
-                                        style={{
-                                            WebkitAppearance: "none",
-                                            MozAppearance: "none",
-                                            appearance: "none",
-                                            background: "lightgray",
-                                            paddingRight: "20px",
-                                        }}
-                                        className={`form-select ${errors.UserId ? "is-invalid" : ""}`}
-                                        disabled
-                                    >
-                                        <option value="" disabled>Select User</option>
-                                        {users.map((u) => (
-                                            <option key={u.userId} value={u.userId}>
-                                                {u.name}
-                                            </option>
-                                        ))}
-                                    </select>
-                                    {errors.UserId && <div className="invalid-feedback">{errors.UserId}</div>}
+                                <div className="row">
+                                    {/* Username Dropdown */}
+                                    <div className="mb-3 col">
+                                        <label htmlFor="UserId" className="form-label">
+                                            <strong>Username:</strong>
+                                        </label>
+                                        <select
+                                            id="UserId"
+                                            name="UserId"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={formData.UserId}
+                                            style={{
+                                                WebkitAppearance: "none",
+                                                MozAppearance: "none",
+                                                appearance: "none",
+                                                background: "lightgray",
+                                                paddingRight: "20px",
+                                            }}
+                                            className={`form-select ${errors.UserId ? "is-invalid" : ""}`}
+                                            disabled
+                                        >
+                                            <option value="" disabled>Select User</option>
+                                            {users.map((u) => (
+                                                <option key={u.userId} value={u.userId}>
+                                                    {u.name}
+                                                </option>
+                                            ))}
+                                        </select>
+                                        {errors.UserId && <div className="invalid-feedback">{errors.UserId}</div>}
+                                    </div>
+                                    {/* Category Type Dropdown */}
+                                    {bid > 0
+                                        ?
+                                        <div className="mb-3 col">
+                                            <label htmlFor="CategoryId" className="form-label">
+                                                <strong>Category Type:</strong>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                id="CategoryId"
+                                                name="CategoryId"
+                                                value={formData.CategoryId}
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                className="form-control"
+                                                required
+                                                hidden
+                                            />
+                                            <input
+                                                type="text"
+                                                value={categoryName}
+                                                className={`form-control ${errors.CategoryId ? "is-invalid" : ""}`}
+                                                required
+                                                disabled
+                                                style={{
+                                                    background: "lightgray",
+                                                    paddingRight: "20px",
+                                                }}
+                                            />
+                                            {errors.CategoryId && <div className="invalid-feedback">{errors.CategoryId}</div>}
+                                        </div>
+
+                                        :
+
+                                        <div className="mb-3 col">
+                                            <label htmlFor="CategoryId" className="form-label">
+                                                <strong>Category Type:</strong>
+                                            </label>
+                                            <select
+                                                id="CategoryId"
+                                                name="CategoryId"
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={formData.CategoryId}
+                                                className={`form-select ${errors.CategoryId ? "is-invalid" : ""}`}
+                                            >
+                                                <option value="" disabled>Select Category</option>
+                                                {categories.map((c) => (
+                                                    <option key={c.categoryId} value={c.categoryId}>
+                                                        {c.categoryName}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                            {errors.CategoryId && <div className="invalid-feedback">{errors.CategoryId}</div>}
+                                        </div>
+
+                                    }
                                 </div>
 
-                                {/* Category Type Dropdown */}
-                                <div className="mb-3">
-                                    <label htmlFor="CategoryId" className="form-label">
-                                        <strong>Category Type:</strong>
-                                    </label>
-                                    <select
-                                        id="CategoryId"
-                                        name="CategoryId"
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        value={formData.CategoryId}
-                                        className={`form-select ${errors.CategoryId ? "is-invalid" : ""}`}
-                                    >
-                                        <option value="" disabled>Select Category</option>
-                                        {categories.map((c) => (
-                                            <option key={c.categoryId} value={c.categoryId}>
-                                                {c.categoryName}
-                                            </option>
-                                        ))}
-                                    </select>
-                                    {errors.CategoryId && <div className="invalid-feedback">{errors.CategoryId}</div>}
+                                <div className="row">
+
+                                    {/* Start Date Input */}
+                                    <div className="mb-3 col">
+                                        <label htmlFor="StartDate" className="form-label">
+                                            <strong>Start Date:</strong>
+                                        </label>
+                                        <input
+                                            type="date"
+                                            id="StartDate"
+                                            name="StartDate"
+                                            value={formData.StartDate}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            className={`form-control ${errors.StartDate ? "is-invalid" : ""}`}
+                                            required
+                                        />
+                                        {errors.StartDate && <div className="invalid-feedback">{errors.StartDate}</div>}
+                                    </div>
+
+                                    {/* End Date Input */}
+                                    <div className="mb-3 col">
+                                        <label htmlFor="EndDate" className="form-label">
+                                            <strong>End Date:</strong>
+                                        </label>
+                                        <input
+                                            type="date"
+                                            id="EndDate"
+                                            name="EndDate"
+                                            value={formData.EndDate}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            className={`form-control ${errors.EndDate ? "is-invalid" : ""}`}
+                                            required
+                                        />
+                                        {errors.EndDate && <div className="invalid-feedback">{errors.EndDate}</div>}
+                                    </div>
                                 </div>
 
-                                {/* Amount Input */}
-                                <div className="mb-3">
-                                    <label htmlFor="Amount" className="form-label">
-                                        <strong>Amount:</strong>
-                                    </label>
-                                    <input
-                                        type="number"
-                                        id="Amount"
-                                        name="Amount"
-                                        value={formData.Amount}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        className={`form-control ${errors.Amount ? "is-invalid" : ""}`}
-                                        placeholder="Enter Amount"
-                                        required
-                                    />
-                                    {errors.Amount && <div className="invalid-feedback">{errors.Amount}</div>}
+                                <div className="row">
+                                    {/* Amount Input */}
+                                    <div className="mb-3 col-6">
+                                        <label htmlFor="Amount" className="form-label">
+                                            <strong>Amount:</strong>
+                                        </label>
+                                        <input
+                                            type="number"
+                                            id="Amount"
+                                            name="Amount"
+                                            value={formData.Amount}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            className={`form-control ${errors.Amount ? "is-invalid" : ""}`}
+                                            placeholder="Enter Amount"
+                                            required
+                                        />
+                                        {errors.Amount && <div className="invalid-feedback">{errors.Amount}</div>}
+                                    </div>
                                 </div>
-
-                                {/* Start Date Input */}
-                                <div className="mb-3">
-                                    <label htmlFor="StartDate" className="form-label">
-                                        <strong>Start Date:</strong>
-                                    </label>
-                                    <input
-                                        type="date"
-                                        id="StartDate"
-                                        name="StartDate"
-                                        value={formData.StartDate}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        className={`form-control ${errors.StartDate ? "is-invalid" : ""}`}
-                                        required
-                                    />
-                                    {errors.StartDate && <div className="invalid-feedback">{errors.StartDate}</div>}
-                                </div>
-
-                                {/* End Date Input */}
-                                <div className="mb-3">
-                                    <label htmlFor="EndDate" className="form-label">
-                                        <strong>End Date:</strong>
-                                    </label>
-                                    <input
-                                        type="date"
-                                        id="EndDate"
-                                        name="EndDate"
-                                        value={formData.EndDate}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        className={`form-control ${errors.EndDate ? "is-invalid" : ""}`}
-                                        required
-                                    />
-                                    {errors.EndDate && <div className="invalid-feedback">{errors.EndDate}</div>}
-                                </div>
-
                                 {/* Buttons */}
                                 <button type="submit" className={bid > 0 ? "btn btn-warning" : "btn btn-success"}>
-                                    {bid > 0 ? "Edit" : "Submit"}
+                                    {bid > 0 ? "Update" : "Submit"}
                                 </button>
-                                <button type="button" onClick={handleReset} className="ms-3 btn btn-secondary">
+                                {bid > 0 ? <></> : <button type="button" onClick={handleReset} className="ms-3 btn btn-secondary">
                                     Reset
-                                </button>
+                                </button>}
+                                
                             </form>
                         </div>
 

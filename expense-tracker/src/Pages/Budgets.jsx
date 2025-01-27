@@ -65,7 +65,7 @@ const Budgets = () => {
                   <div className='d-flex justify-content-evenly'>
                     <button className='btn btn-outline-success' onClick={() => {
                       navigate("/budgets/addeditbudget/" + b.budgetId)
-                    }}>Edit</button>
+                    }}>Update</button>
                     <button className="btn btn-outline-danger" onClick={async () => {
                       if (confirm("Do you want to delete Budget " + b.categoryName)) {
                         const response = await fetch(apiUrl + "/DeleteBudgetsByID/" + b.budgetId, {
@@ -78,7 +78,7 @@ const Budgets = () => {
                         const responseData = await response.json();
 
                         if(response.ok){
-                          toast.error(b.categoryName+" "+responseData.message)
+                          toast.success(b.categoryName+" "+responseData.message)
                           fetchBudgets();
                         }
                       }
