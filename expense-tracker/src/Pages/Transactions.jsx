@@ -46,7 +46,7 @@ const Transactions = () => {
         <Link className="btn btn-primary mb-3 ms-1" to="/transactions/addedittransaction">Add new transaction</Link>
         <div className="row">
           {transaction.map((t) => (
-            <div className="col-md-4 mb-4" key={t.transactionId}>
+            <div className="col-md-12 mb-4" key={t.transactionId}>
               <div className="card transaction-card h-100 shadow-sm">
                 <div className="card-body">
                   <h5 className="card-title text-primary">{t.userName}</h5>

@@ -14,6 +14,7 @@ import AddEditTransactions from './Pages/AddEditTransactions'
 import AddEditBudget from './Pages/AddEditBudget'
 import Category from './Pages/Category'
 import { Logout } from './Pages/logout'
+import AddEditCategory from './Pages/AddEditCategory'
 function App() {
   return (
     <>
@@ -28,6 +29,8 @@ function App() {
           <Route path="/transactions" element={<Transactions />}/>
           <Route path="/transactions/addedittransaction" element={<AddEditTransactions />}/>
           <Route path="/transactions/addedittransaction/:tid" element={<AddEditTransactions />}/>
+          <Route path="/category/addeditcategory/" element={<AddEditCategory />}/>
+          <Route path="/category/addeditcategory/:cid" element={<AddEditCategory />}/>
           <Route path="/budgets" element={<Budgets />}/>
           <Route path="/budgets/addeditbudget" element={<AddEditBudget />}/>
           <Route path="/budgets/addeditbudget/:bid" element={<AddEditBudget />}/>

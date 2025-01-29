@@ -206,7 +206,7 @@ const AddEditTransactions = () => {
         }));
         setTouched({
             UserId: false,
-            CategoryId: false,
+            CategoryId: false,  
             PaymentMethodId: false,
             TransactionAmount: false,
             TransactionDate: false,

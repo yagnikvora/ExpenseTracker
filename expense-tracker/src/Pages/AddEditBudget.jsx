@@ -8,7 +8,6 @@ const apiUrl = "http://localhost:5000/api/";
 
 const AddEditBudget = () => {
     const { bid } = useParams();
-    console.log(bid)
     const navigate = useNavigate();
     const { isLoggedIn, authorizationToken } = useAuth();
     const [categories, setCategories] = useState([]);
@@ -396,7 +395,7 @@ const AddEditBudget = () => {
                                         To insert a new category, click the button below:
                                     </p>
                                     <Link
-                                        to="/"
+                                        to={"/category/addeditcategory/"}
                                         className="btn btn-primary mt-3"
                                     >
                                         Go to Add new Category
