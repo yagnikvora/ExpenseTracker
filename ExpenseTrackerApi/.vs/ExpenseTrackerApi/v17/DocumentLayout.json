@@ -3,44 +3,32 @@
   "WorkspaceRootPath": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expensetrackerapi\\controllers\\budgetscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|solutionrelative:controllers\\budgetscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expensetrackerapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expensetrackerapi\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|solutionrelative:controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expensetrackerapi\\data\\categoriesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|solutionrelative:data\\categoriesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expensetrackerapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expensetrackerapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expensetrackerapi\\controllers\\transactionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|solutionrelative:controllers\\transactionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expensetrackerapi\\controllers\\budgetscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|solutionrelative:controllers\\budgetscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expensetrackerapi\\controllers\\paymentmethodscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|solutionrelative:controllers\\paymentmethodscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expensetrackerapi\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|solutionrelative:controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expensetrackerapi\\data\\usersrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|solutionrelative:data\\usersrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expensetrackerapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expensetrackerapi\\models\\usersmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|solutionrelative:models\\usersmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expensetrackerapi\\models\\budgetsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,8 +42,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-02-04T08:10:19.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BudgetsController.cs",
+              "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Controllers\\BudgetsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BudgetsController.cs",
+              "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Controllers\\BudgetsController.cs",
+              "RelativeToolTip": "Controllers\\BudgetsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T03:35:59.189Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAQwDcAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T03:30:51.476Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CategoriesRepository.cs",
+              "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Data\\CategoriesRepository.cs",
+              "RelativeDocumentMoniker": "Data\\CategoriesRepository.cs",
+              "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Data\\CategoriesRepository.cs",
+              "RelativeToolTip": "Data\\CategoriesRepository.cs",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAAwI0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-19T16:40:51.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CategoriesController.cs",
+              "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Controllers\\CategoriesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CategoriesController.cs",
+              "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Controllers\\CategoriesController.cs",
+              "RelativeToolTip": "Controllers\\CategoriesController.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAgwDQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-19T16:41:48.229Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 5,
@@ -70,93 +121,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BudgetsController.cs",
-              "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Controllers\\BudgetsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\BudgetsController.cs",
-              "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Controllers\\BudgetsController.cs",
-              "RelativeToolTip": "Controllers\\BudgetsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T03:35:59.189Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAQwEIAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T03:30:51.476Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
-              "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "Controllers\\UsersController.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAgwEAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T02:42:58.808Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "UsersRepository.cs",
-              "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Data\\UsersRepository.cs",
-              "RelativeDocumentMoniker": "Data\\UsersRepository.cs",
-              "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Data\\UsersRepository.cs",
-              "RelativeToolTip": "Data\\UsersRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T02:42:04.388Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UsersModel.cs",
-              "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Models\\UsersModel.cs",
-              "RelativeDocumentMoniker": "Models\\UsersModel.cs",
-              "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Models\\UsersModel.cs",
-              "RelativeToolTip": "Models\\UsersModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T02:41:56.307Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CategoriesRepository.cs",
-              "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Data\\CategoriesRepository.cs",
-              "RelativeDocumentMoniker": "Data\\CategoriesRepository.cs",
-              "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Data\\CategoriesRepository.cs",
-              "RelativeToolTip": "Data\\CategoriesRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE0AAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T16:40:51.548Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TransactionsController.cs",
-              "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Controllers\\TransactionsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\TransactionsController.cs",
-              "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Controllers\\TransactionsController.cs",
-              "RelativeToolTip": "Controllers\\TransactionsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T03:36:01.882Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
               "Title": "BudgetsModel.cs",
               "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Models\\BudgetsModel.cs",
               "RelativeDocumentMoniker": "Models\\BudgetsModel.cs",
@@ -168,7 +133,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
               "Title": "launchSettings.json",
               "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",
@@ -177,18 +142,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAIBJwAwAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-01-20T02:39:16.181Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CategoriesController.cs",
-              "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Controllers\\CategoriesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CategoriesController.cs",
-              "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Controllers\\CategoriesController.cs",
-              "RelativeToolTip": "Controllers\\CategoriesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T16:41:48.229Z"
             }
           ]
         }

@@ -2,6 +2,7 @@
 using ExpenseTracketApi.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExpenseTracketApi.Controllers
@@ -50,11 +51,13 @@ namespace ExpenseTracketApi.Controllers
         [HttpDelete("{CategoryID}")]
         public IActionResult DeleteCategoriesByID(int CategoryID)
         {
-            var isDeleted = _categoryRepository.DeleteCategoryByID(CategoryID);
-            if (isDeleted)
-                return Ok(new { Message = "Categories deleted successfully." });
+            var result = _categoryRepository.DeleteCategoryByID(CategoryID);
+            if (result == 1)
+                return Ok(new { success = true, message = "Category deleted successfully." });
+            else if (result == -1)
+                return BadRequest(new { success = false, message = "Cannot delete category as it is associated with other records." });
             else
-                return NotFound(new { Message = "Categories not found or could not be deleted." });
+                return NotFound(new { success = false, message = "Category not found." });
         }
 
         [HttpPost]

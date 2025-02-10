@@ -122,19 +122,30 @@ namespace ExpenseTracketApi.Data
         #endregion
 
         #region DeleteByID
-        public bool DeleteCategoryByID(int CategoryId)
+        public int DeleteCategoryByID(int CategoryId)
         {
-            bool isDeleted = false;
-            string connectionString = _configuration.GetConnectionString("myConnectionString");
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-            SqlCommand command = connection.CreateCommand();
-            command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = "PR_Categories_DeleteByID";
-            command.Parameters.AddWithValue("CategoryId", CategoryId);
-            int rowsAffected = command.ExecuteNonQuery();
-            isDeleted = rowsAffected > 0;
-            return isDeleted;
+            try
+            {
+
+                bool isDeleted = false;
+                string connectionString = _configuration.GetConnectionString("myConnectionString");
+                SqlConnection connection = new SqlConnection(connectionString);
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "PR_Categories_DeleteByID";
+                command.Parameters.AddWithValue("CategoryId", CategoryId);
+                int rowsAffected = command.ExecuteNonQuery();
+                return (rowsAffected > 0) ? 1 : 0;
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 547) // Foreign key constraint violation
+                {
+                    return -1; // Indicates foreign key constraint issue
+                }
+                throw;
+            }
         }
         #endregion
 

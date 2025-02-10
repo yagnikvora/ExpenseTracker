@@ -58,6 +58,7 @@ const Transactions = () => {
   const clearFilter = () => {
     setStartDate("");
     setEndDate("");
+    setFilterAmount("");
     setFilteredTransactions(transaction);
   };
 
@@ -71,6 +72,14 @@ const Transactions = () => {
       clearFilter();
     });
   });
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = ('0' + date.getDate()).slice(-2);
+    const month = ('0' + (date.getMonth() + 1)).slice(-2); // Months are zero-indexed
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
 
   if (!isLoggedIn) {
     if (!toast.isActive(toastId)) {
@@ -128,7 +137,7 @@ const Transactions = () => {
             <div className="row mt-4">
 
               <button id="filterBtn" className="btn btn-primary col mx-3 mt-2">Apply Filter</button>
-              <button id="clearFilterBtn" className="btn btn-secondary col mt-2">Clear Filter</button>
+              <button id="clearFilterBtn" className="btn btn-secondary col mt-2" >Clear Filter</button>
             </div>
           </div>
 
@@ -178,7 +187,7 @@ const Transactions = () => {
                     ₹{t.transactionAmount.toFixed(2)}
                   </td>
 
-                  <td>{new Date(t.transactionDate).toLocaleDateString()}</td>
+                  <td>{formatDate(t.transactionDate)}</td>
                   <td className="text-truncate" style={{ maxWidth: "200px" }}>
                     {t.transactionNotes}
                   </td>

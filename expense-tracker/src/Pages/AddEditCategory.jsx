@@ -292,6 +292,9 @@ const AddEditCategory = () => {
                     <button type="button" onClick={handleReset} className="ms-3 btn btn-secondary">
                         Reset
                     </button>
+                    <button type="button" onClick={()=>{navigate(-1)}} className="ms-3 btn btn-info">
+                        Back
+                    </button>
                 </form>
             </div>
         </div>

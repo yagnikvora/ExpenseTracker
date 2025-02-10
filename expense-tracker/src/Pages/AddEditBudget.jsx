@@ -217,7 +217,7 @@ const AddEditBudget = () => {
         return (
             <div className="container my-5">
                 <div className="card">
-                    <div className="card-header bg-success text-white">
+                    <div className="card-header bg-primary text-white">
                         <h3 className="mb-0">{bid > 0 ? "Edit" : "Add"} Budget</h3>
                     </div>
                     {categories.length != 0 || bid > 0
@@ -374,12 +374,15 @@ const AddEditBudget = () => {
                                     </div>
                                 </div>
                                 {/* Buttons */}
-                                <button type="submit" className={bid > 0 ? "btn btn-warning" : "btn btn-success"}>
+                                <button type="submit" className={bid > 0 ? "btn btn-warning" : "btn btn-primary"}>
                                     {bid > 0 ? "Update" : "Submit"}
                                 </button>
-                                {bid > 0 ? <></> : <button type="button" onClick={handleReset} className="ms-3 btn btn-secondary">
+                                <button type="button" onClick={handleReset} className="ms-3 btn btn-secondary">
                                     Reset
-                                </button>}
+                                </button>
+                                <button type="button" onClick={()=>{navigate(-1)}} className="ms-3 btn btn-info">
+                                    Back
+                                </button>
                                 
                             </form>
                         </div>
@@ -387,9 +390,9 @@ const AddEditBudget = () => {
                         :
                         <div className="card-body">
                             <div className="container mt-3">
-                                <div className="alert alert-success" role="alert">
-                                    <h4 className="alert-heading">All Budgets Successfully Inserted!</h4>
-                                    <p>The budget for all categories has been successfully inserted. You can now add new categories or edit existing ones.</p>
+                                <div className="alert alert-primary" role="alert">
+                                    <h4 className="alert-heading">All Budgets primaryfully Inserted!</h4>
+                                    <p>The budget for all categories has been primaryfully inserted. You can now add new categories or edit existing ones.</p>
                                     <hr />
                                     <p className="mb-0">
                                         To insert a new category, click the button below:
