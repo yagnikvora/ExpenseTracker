@@ -15,6 +15,7 @@ import AddEditBudget from './Pages/AddEditBudget'
 import Category from './Pages/Category'
 import { Logout } from './Pages/logout'
 import AddEditCategory from './Pages/AddEditCategory'
+import EditUser from './Pages/EditUser'
 function App() {
   return (
     <>
@@ -35,7 +36,8 @@ function App() {
           <Route path="/budgets/addeditbudget" element={<AddEditBudget />}/>
           <Route path="/budgets/addeditbudget/:bid" element={<AddEditBudget />}/>
           <Route path="/categories" element={<Category />}/>
-          <Route path="/users" element={<Users />}/>
+          <Route path="/user" element={<Users />}/>
+          <Route path="/user/edituser" element={<EditUser />}/>
         </Routes>
         <Footer />
       </BrowserRouter>

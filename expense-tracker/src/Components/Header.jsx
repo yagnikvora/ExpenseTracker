@@ -31,7 +31,7 @@ const Header = () => {
             <Link className="nav-link" to="/categories">Categories</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/users">User</Link>
+            <Link className="nav-link" to="/user">Profile</Link>
           </li>
         </ul>
         <div className="d-flex align-items-center ms-lg-4">

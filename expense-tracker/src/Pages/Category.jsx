@@ -3,6 +3,7 @@ import './css/Category.css';
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
+import LoadingScreen from "../Components/Loader";
 const apiUrl = 'http://localhost:5000/api/Categories';
 const Category = () => {
 
@@ -32,13 +33,19 @@ const Category = () => {
 
 
 
-  if (!isLoggedIn) {
+  if (!isLoggedIn){
     if (!toast.isActive(toastId)) {
       toast.error("Please Login First", { toastId });
     }
     return <Navigate to="/" />
   }
   else {
+    if (categories.length == 0) {
+      return (
+        <LoadingScreen message="Please Wait" />
+      );
+    }
+    else {
     return (
       <div className="container mt-4">
         <h2 className="text-center mb-4">Category List</h2>
@@ -102,6 +109,8 @@ const Category = () => {
       </div>
 
     );
+
+  }
   }
 };
 

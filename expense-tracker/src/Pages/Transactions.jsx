@@ -3,7 +3,10 @@ import "./css/Transaction.css"
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
+import { GridLoader } from 'react-spinners';
+
 import $ from "jquery";
+import LoadingScreen from "../Components/Loader";
 
 const apiUrl = 'http://localhost:5000/api/Transactions';
 const Transactions = () => {
@@ -88,6 +91,13 @@ const Transactions = () => {
     return <Navigate to="/" />
   }
   else {
+    if (transaction.length == 0) {
+      return (
+        <LoadingScreen message="Please Wait"/>
+      );
+
+    }
+    else {
 
     return (
 
@@ -227,6 +237,7 @@ const Transactions = () => {
         </div>
       </div>
     );
+  }
   }
 }
 export default Transactions

@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expensetrackerapi\\models\\usersmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|solutionrelative:models\\usersmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|y:\\sem-6\\advance .net\\expancetracker\\expensetrackerapi\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F34596A9-F5C6-4409-9585-C19E45653992}|ExpenseTrackerApi.csproj|solutionrelative:controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -42,11 +46,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "UsersModel.cs",
+              "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Models\\UsersModel.cs",
+              "RelativeDocumentMoniker": "Models\\UsersModel.cs",
+              "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Models\\UsersModel.cs*",
+              "RelativeToolTip": "Models\\UsersModel.cs*",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAawA4AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T16:45:10.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "appsettings.json",
               "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -54,12 +71,11 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-04T08:10:19.501Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-04T08:10:19.501Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "BudgetsController.cs",
               "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Controllers\\BudgetsController.cs",
               "RelativeDocumentMoniker": "Controllers\\BudgetsController.cs",
@@ -71,7 +87,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -83,7 +99,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "CategoriesRepository.cs",
               "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Data\\CategoriesRepository.cs",
               "RelativeDocumentMoniker": "Data\\CategoriesRepository.cs",
@@ -91,25 +107,24 @@
               "RelativeToolTip": "Data\\CategoriesRepository.cs",
               "ViewState": "AgIAAIAAAAAAAAAAAAAAwI0AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T16:40:51.548Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T16:40:51.548Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "CategoriesController.cs",
               "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Controllers\\CategoriesController.cs",
               "RelativeDocumentMoniker": "Controllers\\CategoriesController.cs",
               "ToolTip": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Controllers\\CategoriesController.cs",
               "RelativeToolTip": "Controllers\\CategoriesController.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAgwDQAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAACsAAAAAAAAAAAA3wDQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-19T16:41:48.229Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "PaymentMethodsController.cs",
               "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Controllers\\PaymentMethodsController.cs",
               "RelativeDocumentMoniker": "Controllers\\PaymentMethodsController.cs",
@@ -121,7 +136,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "BudgetsModel.cs",
               "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Models\\BudgetsModel.cs",
               "RelativeDocumentMoniker": "Models\\BudgetsModel.cs",
@@ -133,7 +148,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "launchSettings.json",
               "DocumentMoniker": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",

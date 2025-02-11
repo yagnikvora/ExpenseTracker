@@ -1,4 +1,4 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth"
 import { toast } from "react-toastify";
 import { FaUser, FaEnvelope, FaMobile, FaCalendarAlt, FaClock } from "react-icons/fa"
@@ -91,7 +91,7 @@ const Users = () => {
                                     <div className="col-md-6">
                                         <div className="info-item">
                                             <div>
-                                                <h5 className="mb-0 btn btn-primary">Update Profile</h5>
+                                                <Link to="/user/edituser" className="mb-0 btn btn-primary">Update Profile</Link>
                                             </div>
                                         </div>
                                     </div>

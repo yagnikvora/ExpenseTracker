@@ -23,7 +23,7 @@ const Home = () => {
                 // <h2 className="lead mb-4">Welcome {user.name}</h2> 
                 <div className="welcome-banner">
                   <h2 className="welcome-text">
-                    Welcome <span className="highlight-name">Yagnik</span>
+                    Welcome <span className="highlight-name">{user.name}</span>
                   </h2>
                 </div>
                 : <Link to="/signup" className="btn btn-primary btn-lg me-3">Get Started</Link>}

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../store/auth';
 import { toast } from 'react-toastify';
 import { GridLoader } from 'react-spinners';
+import LoadingScreen from '../Components/Loader';
 const apiUrl = "http://localhost:5000/api/Budgets"
 const Budgets = () => {
   const { isLoggedIn, authorizationToken } = useAuth();
@@ -41,19 +42,8 @@ const Budgets = () => {
   else {
     if (budget.length == 0) {
       return (
-        <div className='container d-flex justify-content-center align-items-center vh-100'>
-          <GridLoader
-            color="#005aff"
-            cssOverride={{}}
-            loading
-            margin={5}
-            size={20}
-            speedMultiplier={1}
-            width={2}
-          />
-        </div>
+        <LoadingScreen message="Please Wait" />
       );
-
     }
     else {
       return (
