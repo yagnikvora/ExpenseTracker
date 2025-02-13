@@ -226,7 +226,7 @@ const AddEditBudget = () => {
                             <form onSubmit={handleSubmit}>
                                 <div className="row">
                                     {/* Username Dropdown */}
-                                    <div className="mb-3 col">
+                                    <div className="mb-3 col-md">
                                         <label htmlFor="UserId" className="form-label">
                                             <strong>Username:</strong>
                                         </label>
@@ -258,7 +258,7 @@ const AddEditBudget = () => {
                                     {/* Category Type Dropdown */}
                                     {bid > 0
                                         ?
-                                        <div className="mb-3 col">
+                                        <div className="mb-3 col-md">
                                             <label htmlFor="CategoryId" className="form-label">
                                                 <strong>Category Type:</strong>
                                             </label>
@@ -289,7 +289,7 @@ const AddEditBudget = () => {
 
                                         :
 
-                                        <div className="mb-3 col">
+                                        <div className="mb-3 col-md">
                                             <label htmlFor="CategoryId" className="form-label">
                                                 <strong>Category Type:</strong>
                                             </label>
@@ -317,7 +317,7 @@ const AddEditBudget = () => {
                                 <div className="row">
 
                                     {/* Start Date Input */}
-                                    <div className="mb-3 col">
+                                    <div className="mb-3 col-md">
                                         <label htmlFor="StartDate" className="form-label">
                                             <strong>Start Date:</strong>
                                         </label>
@@ -335,7 +335,7 @@ const AddEditBudget = () => {
                                     </div>
 
                                     {/* End Date Input */}
-                                    <div className="mb-3 col">
+                                    <div className="mb-3 col-md">
                                         <label htmlFor="EndDate" className="form-label">
                                             <strong>End Date:</strong>
                                         </label>
@@ -355,7 +355,7 @@ const AddEditBudget = () => {
 
                                 <div className="row">
                                     {/* Amount Input */}
-                                    <div className="mb-3 col-6">
+                                    <div className="mb-3 col-md-6">
                                         <label htmlFor="Amount" className="form-label">
                                             <strong>Amount:</strong>
                                         </label>

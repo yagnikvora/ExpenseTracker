@@ -3,8 +3,7 @@ import './css/Budget.css';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../store/auth';
 import { toast } from 'react-toastify';
-import { GridLoader } from 'react-spinners';
-import LoadingScreen from '../Components/Loader';
+import LoadingScreen from '../Components/LoadingScreen';
 const apiUrl = "http://localhost:5000/api/Budgets"
 const Budgets = () => {
   const { isLoggedIn, authorizationToken } = useAuth();

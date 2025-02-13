@@ -204,6 +204,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ExpenseTrackerApi.Controllers.DashboardController",
+    "Method": "GetDashboardData",
+    "RelativePath": "api/Dashboard/GetDashboardData",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ExpenseTracketApi.Controllers.PaymentMethodsController",
     "Method": "DeletePaymentMethodsByID",
     "RelativePath": "api/PaymentMethods/DeletePaymentMethodsByID/{PaymentMethodsID}",

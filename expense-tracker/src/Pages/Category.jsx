@@ -3,7 +3,7 @@ import './css/Category.css';
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
-import LoadingScreen from "../Components/Loader";
+import LoadingScreen from "../Components/LoadingScreen";
 const apiUrl = 'http://localhost:5000/api/Categories';
 const Category = () => {
 

@@ -1,154 +1,250 @@
-import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { useAuth } from '../store/auth';
-import { toast } from 'react-toastify';
+import React, { useEffect, useState } from "react";
+import {
+    Chart as ChartJS,
+    ArcElement,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+} from "chart.js";
+import { Bar, Pie } from "react-chartjs-2";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "./css/Dashboard.css";
+import { Link, Navigate } from "react-router-dom";
+import LoadingScreen from "../Components/LoadingScreen";
+import { useAuth } from "../store/auth";
+import { toast } from "react-toastify";
 
-// Placeholder data for the chart
-const spendingData = [
-    { name: 'Jan', amount: 4000 },
-    { name: 'Feb', amount: 3000 },
-    { name: 'Mar', amount: 2000 },
-    { name: 'Apr', amount: 2780 },
-    { name: 'May', amount: 1890 },
-    { name: 'Jun', amount: 2390 },
-];
-
-// Placeholder data for recent transactions
-const recentTransactions = [
-    { id: 1, date: '2023-06-15', description: 'Grocery Shopping', amount: -120.50, category: 'Food' },
-    { id: 2, date: '2023-06-14', description: 'Salary Deposit', amount: 3000.00, category: 'Income' },
-    { id: 3, date: '2023-06-13', description: 'Electric Bill', amount: -85.20, category: 'Utilities' },
-    { id: 4, date: '2023-06-12', description: 'Restaurant Dinner', amount: -65.30, category: 'Dining Out' },
-];
-
+// ✅ Register necessary Chart.js components
+ChartJS.register(ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const Dashboard = () => {
+    const [dashboardData, setDashboardData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const { isLoggedIn } = useAuth();
-    const [totalAmount, setTotalAmount] = useState(1500);
-    const [income, setIncome] = useState(1000);
-    const [expense, setExpense] = useState(1000);
-    const [remainBudget, setRemainBudget] = useState((totalAmount + income - expense));
-
     const toastId = "login-toast";
 
+
+    useEffect(() => {
+        const fetchDashboardData = async () => {
+            try {
+                const response = await fetch("http://localhost:5000/api/Dashboard/GetDashboardData"); // Update API URL if needed
+                if (!response.ok) {
+                    throw new Error("Failed to fetch data");
+                }
+                const data = await response.json();
+                // console.log("API Response:", data); // ✅ Debug: Check API response structure
+                setDashboardData(data);
+            } catch (err) {
+                console.error("Error fetching data:", err);
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchDashboardData();
+    }, []);
+
+    const getRandomColor = () => {
+        const r = Math.floor(Math.random() * 256); // Random Red (0-255)
+        const g = Math.floor(Math.random() * 256); // Random Green (0-255)
+        const b = Math.floor(Math.random() * 256); // Random Blue (0-255)
+        const a = (Math.random() * 0.5 + 0.5).toFixed(2); // Random Alpha (0.5 - 1 for better visibility)
+        return `rgba(${r}, ${g}, ${b}, ${a})`;
+    };
+
+    if (loading) return <LoadingScreen message="Please Wait" />;
+    if (error) return <div className="text-center mt-5 text-danger">Error: {error}</div>;
+    if (!dashboardData) return <div className="text-center mt-5">No data available</div>;
     if (!isLoggedIn) {
         if (!toast.isActive(toastId)) {
             toast.error("Please Login First", { toastId });
-          }
+        }
         return <Navigate to="/" />
-    }
-    else {
-        return (
-            <div className="container-fluid py-4 bg-light">
-                <div className='container'>
-                    {/* Summary Cards */}
-                    <div className="row mb-4">
-                        <div className="col-md-3 mb-3">
-                            <div className="card bg-info bg-opacity-25 h-100 border-0">
-                                <div className="card-body">
-                                    <h5 className="card-title text-info-emphasis">Total Budget</h5>
-                                    <h2 className="card-text text-dark">₹{totalAmount}</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3 mb-3">
-                            <div className="card bg-success bg-opacity-25 h-100 border-0">
-                                <div className="card-body">
-                                    <h5 className="card-title text-success">Income</h5>
-                                    <h2 className="card-text text-dark">₹{income}</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3 mb-3">
-                            <div className="card bg-danger bg-opacity-25 h-100 border-0">
-                                <div className="card-body">
-                                    <h5 className="card-title text-danger">Expenses</h5>
-                                    <h2 className="card-text text-dark">₹{expense}</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3 mb-3">
-                            <div className="card bg-warning bg-opacity-25 h-100 border-0">
-                                <div className="card-body">
-                                    <h5 className="card-title text-warning-emphasis">Remaining Budget</h5>
-                                    <h2 className="card-text text-dark">₹{remainBudget}</h2>
-                                </div>
-                            </div>
-                        </div>
+    } const { counts = [], recentTransactions = [], categoryWiseExpenses = [], monthlyTrends = [], topSpenders = [] } = dashboardData;
+    // ✅ Check if data exists before rendering
+    const summaryCards = counts.length > 0 ? (
+        counts.map((count) => (
+            <div className="col-md-3">
+                <div className="dashboard-card">
+                    <div className="card-icon">
+                        <i className={`fas ${count.metric === 'Total Users' ? 'fa-users' :
+                            count.metric === 'Total Expenses' ? 'fa-money-bill-wave' :
+                                count.metric === 'Total Income' ? 'fa-chart-line' :
+                                    count.metric === 'Total Categories' ? 'fa-layer-group' : 'fa-question'}`}></i>
                     </div>
-
-                    {/* Spending Chart */}
-                    <div className="row mb-4">
-                        <div className="col-md-8 mb-3">
-                            <div className="card border-0 shadow-sm">
-                                <div className="card-body">
-                                    <h5 className="card-title text-primary">Monthly Spending</h5>
-                                    <ResponsiveContainer width="100%" height={300}>
-                                        <BarChart data={spendingData}>
-                                            <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                                            <XAxis dataKey="name" stroke="#888" />
-                                            <YAxis stroke="#888" />
-                                            <Tooltip />
-                                            <Legend />
-                                            <Bar dataKey="amount" fill="#8dd1e1" />
-                                        </BarChart>
-                                    </ResponsiveContainer>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4 mb-3">
-                            <div className="card h-100 border-0 shadow-sm">
-                                <div className="card-body">
-                                    <h5 className="card-title text-primary">Quick Actions</h5>
-                                    <div className="d-grid gap-2">
-                                        <button className="btn btn-outline-info">Add Income</button>
-                                        <button className="btn btn-outline-danger">Add Expense</button>
-                                        <button className="btn btn-outline-secondary">Generate Report</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Recent Transactions */}
-                    <div className="row">
-                        <div className="col-12">
-                            <div className="card border-0 shadow-sm">
-                                <div className="card-body">
-                                    <h5 className="card-title text-primary">Recent Transactions</h5>
-                                    <div className="table-responsive">
-                                        <table className="table table-hover">
-                                            <thead className="table-light">
-                                                <tr>
-                                                    <th>Date</th>
-                                                    <th>Description</th>
-                                                    <th>Category</th>
-                                                    <th>Amount</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {recentTransactions.map((transaction) => (
-                                                    <tr key={transaction.id}>
-                                                        <td>{transaction.date}</td>
-                                                        <td>{transaction.description}</td>
-                                                        <td>{transaction.category}</td>
-                                                        <td className={transaction.amount < 0 ? 'text-danger' : 'text-success'}>
-                                                            ₹{Math.abs(transaction.amount).toFixed(2)}
-                                                        </td>
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="card-content">
+                        <h5>{count.metric}</h5>
+                        <h2>{count.value}</h2>
                     </div>
                 </div>
             </div>
-        );
-    }
+        ))
+    ) : (
+        <p className="text-center">No summary data available.</p>
+    );
+
+    const categoryExpenseChart = categoryWiseExpenses.length > 0
+        ? {
+            labels: categoryWiseExpenses.map((item) => item.category),
+            datasets: [
+                {
+                    label: "Expenses",
+                    data: categoryWiseExpenses.map((item) => item.totalAmount),
+                    backgroundColor: categoryWiseExpenses.map(() => getRandomColor()),
+                },
+            ],
+        }
+        : null;
+
+    const monthlyTrendsChart = monthlyTrends.length > 0
+        ? {
+            labels: monthlyTrends.map((item) => item.monthYear),
+            datasets: [
+                {
+                    label: "Income",
+                    data: monthlyTrends.map((item) => item.totalIncome),
+                    backgroundColor: "rgba(75, 192, 192, 0.6)",
+                },
+                {
+                    label: "Expense",
+                    data: monthlyTrends.map((item) => item.totalExpense),
+                    backgroundColor: "rgba(255, 99, 132, 0.6)",
+                },
+            ],
+        }
+        : null;
+
+    const topSpendersChart = topSpenders.length > 0
+        ? {
+            labels: topSpenders.map((item) => item.userName),
+            datasets: [
+                {
+                    label: "Total Spent",
+                    data: topSpenders.map((item) => item.totalSpent),
+                    backgroundColor: "rgba(153, 102, 255, 0.6)",
+                },
+            ],
+        }
+        : null;
+
+    const pieOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+    };
+
+    return (
+        <div className="container dash-container mt-4">
+            <h2 className="text-center mb-4"></h2>
+
+            {/* Summary Cards */}
+            <div className="row mb-4">{summaryCards}</div>
+
+            {/* Charts */}
+            <div className="row">
+                {categoryExpenseChart && (
+                    <div className="col-md-5">
+                        <div className="chart-container border border-1" style={{ width: "400px", height: "480px" }}>
+                            <h5>Category-wise Expenses</h5>
+                            <Pie data={categoryExpenseChart} options={pieOptions} />
+                        </div>
+                    </div>
+                )}
+                {monthlyTrendsChart && (
+                    <div className="col-md-6">
+                        <div className="chart-container border border-1" >
+                            <h5>Monthly Income & Expenses</h5>
+                            <Bar data={monthlyTrendsChart} />
+                        </div>
+                    </div>
+                )}
+
+                
+
+            </div>
+
+            <div className="row mt-4 ">
+                {topSpendersChart && (
+                    <div className="col-md-6 ">
+                        <div className="chart-container border border-1">
+                            <h5>Top Spenders</h5>
+                            <Bar data={topSpendersChart} />
+                        </div>
+                    </div>
+                )}
+                {/* Quick Links Section */}
+                <div className="col-md-5">
+                    <div className="card dash-card p-4 shadow-sm rounded border border-1">
+                        <h5 className="text-primary mb-3">Quick Links</h5>
+                        <Link to="/" className="btn btn-outline-danger w-100 py-2 my-2 rounded">
+                            🏠 Go To Home
+                        </Link>
+                        <Link to="/transactions/addedittransaction" className="btn btn-outline-success w-100 py-2 my-2 rounded">
+                            ➕ Add New Transaction
+                        </Link>
+                        <Link to="/category/addeditcategory/" className="btn btn-outline-info w-100 py-2 my-2 rounded">
+                            📂 Add New Category
+                        </Link>
+                        <Link to="/budgets/addeditbudget" className="btn btn-outline-warning w-100 py-2 my-2 rounded">
+                            💰 Add New Budget
+                        </Link>
+                    </div>
+                </div>
+            </div>
+
+            {/* Recent Transactions */}
+            <div className="mt-5">
+                <div className="card dash-card shadow-sm p-4">
+                    <h5 className="text-primary mb-3">Recent Transactions</h5>
+                    {recentTransactions.length > 0 ? (
+                        <div className="table-responsive">
+                            <table className="table table-hover table-borderless">
+                                <thead className="table-light">
+                                    <tr>
+                                        <th>#TID</th>
+                                        <th>User</th>
+                                        <th>Amount</th>
+                                        <th>Category</th>
+                                        <th>Type</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {recentTransactions.map((tx, index) => (
+                                        <tr key={tx.transactionID} className="align-middle">
+                                            <td>{tx.transactionID}</td>
+                                            <td className="fw-bold">{tx.userName}</td>
+                                            <td>
+                                                <span className={tx.type === 'Expense' ? 'text-danger' : 'text-success'}>
+                                                    ${tx.amount.toFixed(2)}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span className="badge bg-secondary">{tx.category}</span>
+                                            </td>
+                                            <td>
+                                                <span className={`badge ${tx.type === 'Expense' ? 'bg-danger' : 'bg-success'}`}>
+                                                    {tx.type}
+                                                </span>
+                                            </td>
+                                            <td>{new Date(tx.date).toLocaleDateString()}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    ) : (
+                        <p className="text-center text-muted">No recent transactions available.</p>
+                    )}
+                </div>
+            </div>
+
+        </div>
+    );
 };
 
 export default Dashboard;

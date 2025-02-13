@@ -1,4 +1,5 @@
 
+using ExpenseTrackerApi.Data;
 using ExpenseTracketApi.Data;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -36,6 +37,7 @@ namespace ExpenseTracketApi
             builder.Services.AddScoped<BudgetsRepository>();
             builder.Services.AddScoped<PaymentMethodsRepository>();
             builder.Services.AddScoped<TransactionsRepository>();
+            builder.Services.AddScoped<DashboardRepository>();
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddAuthentication(options =>

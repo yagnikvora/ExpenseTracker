@@ -4,13 +4,14 @@ import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 
 const Signup = () => {
-  const { isLoggedIn , authorizationToken } = useAuth();
+  const { isLoggedIn, authorizationToken } = useAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     Name: '',
     Email: '',
     Mobile: '',
     PasswordHash: '',
+    HOF: false,
   });
 
   const [touched, setTouched] = useState({
@@ -46,7 +47,7 @@ const Signup = () => {
     const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
-      [name]: value
+      [name]: name === "HOF" ? value === "true" : value,
     }));
 
     if (touched[name]) {
@@ -82,16 +83,16 @@ const Signup = () => {
     setErrors(newErrors);
 
     if (Object.values(newErrors).every(error => error === '')) {
-      const response = await fetch("http://localhost:5000/api/Users/Register",{
-        method : "POST",
-        headers :{
-          "Content-Type" : "application/json",
-          Authorization : authorizationToken
+      const response = await fetch("http://localhost:5000/api/Users/Register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: authorizationToken
         },
-        body : JSON.stringify(formData)
+        body: JSON.stringify(formData)
       })
       const data = await response.json();
-      if(response.ok){
+      if (response.ok) {
         toast.success(data.message);
         navigate("/login");
       }
@@ -120,6 +121,37 @@ const Signup = () => {
                     </div>
 
                     <form onSubmit={handleSubmit}>
+                      <div className="mb-3">
+                        <label className="form-label">Is Head of Family (HOF)? <span className="text-danger">*</span></label>
+                        <div>
+                          <div className="form-check form-check-inline">
+                            <input
+                              type="radio"
+                              className="form-check-input"
+                              id="HOFYes"
+                              name="HOF"
+                              value="true"
+                              checked={formData.HOF === true}
+                              onChange={handleChange}
+                              required
+                            />
+                            <label className="form-check-label" htmlFor="HOFYes">Yes</label>
+                          </div>
+                          <div className="form-check form-check-inline">
+                            <input
+                              type="radio"
+                              className="form-check-input"
+                              id="HOFNo"
+                              name="HOF"
+                              value="false"
+                              checked={formData.HOF === false}
+                              onChange={handleChange}
+                              required
+                            />
+                            <label className="form-check-label" htmlFor="HOFNo">No</label>
+                          </div>
+                        </div>
+                      </div>
 
                       <div className="mb-3">
                         <label htmlFor="Name" className="form-label">Name <span className="text-danger">*</span></label>

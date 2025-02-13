@@ -192,7 +192,7 @@ const AddEditCategory = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="row">
                         {/* Username Dropdown */}
-                        <div className="mb-3 col">
+                        <div className="mb-3 col-md">
                             <label htmlFor="UserId" className="form-label">
                                 <strong>Username:</strong>
                             </label>
@@ -223,7 +223,7 @@ const AddEditCategory = () => {
                         </div>
 
                         {/* Category Name Input */}
-                        <div className="mb-3 col">
+                        <div className="mb-3 col-md">
                             <label htmlFor="CategoryName" className="form-label">
                                 <strong>Category Name:</strong>
                             </label>
@@ -245,7 +245,7 @@ const AddEditCategory = () => {
 
                     <div className="row">
                         {/* CategoryType Input */}
-                        <div className="mb-3 col">
+                        <div className="mb-3 col-md">
                             <label htmlFor="CategoryType" className="form-label">
                                 <strong>Category Type:</strong>
                             </label>
@@ -266,7 +266,7 @@ const AddEditCategory = () => {
                         </div>
 
                          {/* CategoryDescription Textarea */}
-                         <div className="mb-3 col">
+                         <div className="mb-3 col-md">
                             <label htmlFor="CategoryDescription" className="form-label">
                                 <strong>Category Description:</strong>
                             </label>

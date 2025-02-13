@@ -36,6 +36,7 @@ namespace ExpenseTracketApi.Data
                     Email = reader["Email"].ToString(),
                     Mobile = reader["Mobile"].ToString(),
                     PasswordHash = reader["PasswordHash"].ToString(),
+                    HOF = Convert.ToBoolean(reader["HOF"]),
                     CreatedAt = Convert.ToDateTime(reader["CreatedAt"]),
                     ModifiedAt = Convert.ToDateTime(reader["ModifiedAt"])
                 });
@@ -45,6 +46,7 @@ namespace ExpenseTracketApi.Data
         }
         #endregion
 
+        #region User Login
         public UsersModel Login(UserLoginModel user)
         {
             UsersModel userData = null;
@@ -73,6 +75,8 @@ namespace ExpenseTracketApi.Data
             return userData;
 
         }
+        #endregion
+
         #region UsersDropdown
         public List<UsersDropdownModel> UsersDropdown()
         {
@@ -118,6 +122,7 @@ namespace ExpenseTracketApi.Data
                     Email = reader["Email"].ToString(),
                     Mobile = reader["Mobile"].ToString(),
                     PasswordHash = reader["PasswordHash"].ToString(),
+                    HOF = Convert.ToBoolean(reader["HOF"]),
                     CreatedAt = Convert.ToDateTime(reader["CreatedAt"]),
                     ModifiedAt = Convert.ToDateTime(reader["ModifiedAt"])
                 });
@@ -158,6 +163,7 @@ namespace ExpenseTracketApi.Data
             command.Parameters.AddWithValue("Email", user.Email);
             command.Parameters.AddWithValue("Mobile", user.Mobile);
             command.Parameters.AddWithValue("PasswordHash", user.PasswordHash);
+            command.Parameters.AddWithValue("HOF", user.HOF);
             int rowsAffected = command.ExecuteNonQuery();
             isInserted = rowsAffected > 0;
             return isInserted;
@@ -180,6 +186,7 @@ namespace ExpenseTracketApi.Data
             command.Parameters.AddWithValue("Email", user.Email);
             command.Parameters.AddWithValue("Mobile", user.Mobile);
             command.Parameters.AddWithValue("PasswordHash", user.PasswordHash);
+            command.Parameters.AddWithValue("HOF", user.HOF);
             int rowsAffected = command.ExecuteNonQuery();
             isUpdate = rowsAffected > 0;
             return isUpdate;

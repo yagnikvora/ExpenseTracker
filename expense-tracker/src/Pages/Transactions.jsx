@@ -5,9 +5,8 @@ import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-
 import $ from "jquery";
-import LoadingScreen from "../Components/Loader";
+import LoadingScreen from "../Components/LoadingScreen";
 
 const apiUrl = 'http://localhost:5000/api/Transactions';
 const Transactions = () => {
@@ -217,7 +216,7 @@ const Transactions = () => {
 
           <div className="row">
 
-            <div className="col-3">
+            <div className="col-md ">
               <Link to="/transactions/addedittransaction" className="btn btn-primary mb-4 d-inline-flex align-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-plus" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5" />
@@ -228,11 +227,14 @@ const Transactions = () => {
               </Link>
             </div>
 
-            <div className="col">
+            <div className="col-md">
               <button className="btn btn-success mb-3" onClick={downloadReport}>
                 📄 Download Report
               </button>
             </div>
+            <div className="col-md"></div>
+            <div className="col-md"></div>
+            <div className="col-md-3"></div>
 
           </div>
 

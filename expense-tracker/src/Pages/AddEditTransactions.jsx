@@ -238,7 +238,7 @@ const AddEditTransactions = () => {
                             <div className="row">
 
                                 {/* Username Dropdown */}
-                                <div className="mb-3 col">
+                                <div className="mb-3 col-md">
                                     <label htmlFor="UserId" className="form-label">
                                         <strong>Username:</strong>
                                     </label>
@@ -269,7 +269,7 @@ const AddEditTransactions = () => {
                                 </div>
 
                                 {/* Category Type Dropdown */}
-                                <div className="mb-3 col">
+                                <div className="mb-3 col-md">
                                     <label htmlFor="CategoryId" className="form-label">
                                         <strong>Category Type:</strong>
                                     </label>
@@ -294,7 +294,7 @@ const AddEditTransactions = () => {
 
                             <div className="row">
                                 {/* Payment Method Dropdown */}
-                                <div className="mb-3 col">
+                                <div className="mb-3 col-md">
                                     <label htmlFor="PaymentMethodId" className="form-label">
                                         <strong>Payment Method:</strong>
                                     </label>
@@ -317,7 +317,7 @@ const AddEditTransactions = () => {
                                 </div>
 
                                 {/* TransactionAmount Input */}
-                                <div className="mb-3 col">
+                                <div className="mb-3 col-md">
                                     <label htmlFor="TransactionAmount" className="form-label">
                                         <strong>Transaction Amount:</strong>
                                     </label>
@@ -339,7 +339,7 @@ const AddEditTransactions = () => {
 
                             <div className="row">
                                 {/* TransactionNotes Textarea */}
-                                <div className="mb-3 col">
+                                <div className="mb-3 col-md">
                                     <label htmlFor="TransactionNotes" className="form-label">
                                         <strong>Transaction Notes:</strong>
                                     </label>
@@ -358,7 +358,7 @@ const AddEditTransactions = () => {
                                 </div>
 
                                 {/* TransactionDate Input */}
-                                <div className="mb-3 col">
+                                <div className="mb-3 col-md">
                                     <label htmlFor="TransactionDate" className="form-label">
                                         <strong>Transaction Date:</strong>
                                     </label>
