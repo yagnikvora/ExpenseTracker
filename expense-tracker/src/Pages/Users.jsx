@@ -1,7 +1,7 @@
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth"
 import { toast } from "react-toastify";
-import { FaUser, FaEnvelope, FaMobile, FaCalendarAlt, FaClock } from "react-icons/fa"
+import { FaUser, FaEnvelope, FaMobile, FaCalendarAlt, FaClock, FaCrown   } from "react-icons/fa"
 import { useState } from "react";
 import "./css/user.css"
 
@@ -85,6 +85,15 @@ const Users = () => {
                                             <div>
                                                 <h5 className="mb-0">Last Modified</h5>
                                                 <p>{formatDate(userData.modifiedAt)}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6 mb-3">
+                                        <div className="info-item">
+                                            <FaCrown   className="icon" />
+                                            <div>
+                                                <h5 className="mb-0">Head Of Family</h5>
+                                                <p>{userData.hofName}</p>
                                             </div>
                                         </div>
                                     </div>

@@ -14,13 +14,15 @@ const Transactions = () => {
   const navigate = useNavigate();
   const toastId = "login-toast";
   const [transaction, setTransaction] = useState([]);
-
   const [startDate, setStartDate] = useState()
   const [endDate, setEndDate] = useState()
   const [filterAmount, setFilterAmount] = useState("");
+  
+  const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('userData')))
+  // console.log(userData)
 
   const fetchTransactions = async () => {
-    await fetch(apiUrl + "/GetAllTransactions", {
+    await fetch(apiUrl + "/GetTransactionByHOFId/" + userData.hofId, {
       method: "GET",
       headers: {
         Authorization: authorizationToken,

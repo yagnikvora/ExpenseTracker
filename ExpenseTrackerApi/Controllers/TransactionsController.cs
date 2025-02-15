@@ -8,7 +8,7 @@ namespace ExpenseTracketApi.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class TransactionsController : ControllerBase
     {
         private readonly TransactionsRepository _transactionRepository;
@@ -30,7 +30,14 @@ namespace ExpenseTracketApi.Controllers
         [HttpGet("{TransactionID}")]
         public IActionResult GetAllTransactionsByID(int TransactionID)
         {
-            var transactionList = _transactionRepository.GetUserById(TransactionID);
+            var transactionList = _transactionRepository.GetTransactionById(TransactionID);
+            return Ok(transactionList);
+        }
+        
+        [HttpGet("{HOFId}")]
+        public IActionResult GetTransactionByHOFId(int HOFId)
+        {
+            var transactionList = _transactionRepository.GetTransactionByHOFId(HOFId);
             return Ok(transactionList);
         }
 

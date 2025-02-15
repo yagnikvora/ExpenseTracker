@@ -18,6 +18,9 @@ const EditUser = () => {
         Email: "",
         Mobile: "",
         PasswordHash: "",
+        HOF: loggedInUser.hof,
+        HOFId:loggedInUser.hofId,
+        HOFName:loggedInUser.hofName,
         CreatedAt: "",
         ModifiedAt: ""
     })
@@ -137,9 +140,22 @@ const EditUser = () => {
             const responseData = await response.json();
 
             if (response.ok) {
-                storeUserInLS({ userId: formData.UserId, name: formData.Name, email: formData.Email, mobile: formData.Mobile, passwordHash: formData.PasswordHash, createdAt: formData.CreatedAt, modifiedAt: formData.ModifiedAt })
+                storeUserInLS({ 
+                    userId: formData.UserId, 
+                    name: formData.Name, email: 
+                    formData.Email, 
+                    mobile: formData.Mobile, 
+                    passwordHash: formData.PasswordHash, 
+                    createdAt: formData.CreatedAt, 
+                    modifiedAt: formData.ModifiedAt,   
+                    hof: loggedInUser.hof,
+                    hofId:loggedInUser.hofId,
+                    hofName:loggedInUser.hofName, })
                 toast.warning(responseData.message)
                 navigate("/user")
+            }
+            else{
+                console.log(responseData)
             }
         }
     };

@@ -47,8 +47,8 @@ namespace ExpenseTracketApi.Data
         }
         #endregion
 
-        #region GetUserById
-        public List<TransactionsModel> GetUserById(int TransactionsId)
+        #region GetTransactionById
+        public List<TransactionsModel> GetTransactionById(int TransactionsId)
         {
             var budget = new List<TransactionsModel>();
             string connectionString = _configuration.GetConnectionString("myConnectionString");
@@ -58,6 +58,42 @@ namespace ExpenseTracketApi.Data
             command.CommandType = CommandType.StoredProcedure;
             command.CommandText = "PR_Transactions_SelectByID";
             command.Parameters.AddWithValue("TransactionId", TransactionsId);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                budget.Add(new TransactionsModel
+                {
+                    TransactionId = Convert.ToInt32(reader["TransactionId"]),
+                    UserName = reader["UserName"].ToString(),
+                    CategoryName = reader["CategoryName"].ToString(),
+                    CategoryType = reader["CategoryType"].ToString(),
+                    CategoryId = Convert.ToInt32(reader["CategoryId"]),
+                    MethodName = reader["MethodName"].ToString(),
+                    PaymentMethodId = Convert.ToInt32(reader["PaymentMethodId"]),
+                    TransactionAmount = Convert.ToDouble(reader["TransactionAmount"]),
+                    TransactionDate = Convert.ToDateTime(reader["TransactionDate"]),
+                    TransactionNotes = reader["TransactionNotes"].ToString(),
+                    UserId = Convert.ToInt32(reader["UserId"]),
+                    CreatedAt = Convert.ToDateTime(reader["CreatedAt"]),
+                    ModifiedAt = Convert.ToDateTime(reader["ModifiedAt"])
+                });
+            }
+            connection.Close();
+            return budget;
+        }
+        #endregion
+
+        #region GetTransactionByHOFId
+        public List<TransactionsModel> GetTransactionByHOFId(int HOFId)
+        {
+            var budget = new List<TransactionsModel>();
+            string connectionString = _configuration.GetConnectionString("myConnectionString");
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            SqlCommand command = connection.CreateCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "PR_Transactions_SelectByHOFID";
+            command.Parameters.AddWithValue("HOFId", HOFId);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {

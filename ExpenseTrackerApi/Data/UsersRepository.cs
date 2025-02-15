@@ -32,6 +32,8 @@ namespace ExpenseTracketApi.Data
                 users.Add(new UsersModel
                 {
                     UserId = Convert.ToInt32(reader["UserId"]),
+                    HOFId = Convert.ToInt32(reader["HOFId"]),
+                    HOFName = reader["HOFName"].ToString(),
                     Name = reader["Name"].ToString(),
                     Email = reader["Email"].ToString(),
                     Mobile = reader["Mobile"].ToString(),
@@ -64,6 +66,9 @@ namespace ExpenseTracketApi.Data
                 userData = new UsersModel
                 {
                     UserId = Convert.ToInt32(reader["UserId"]),
+                    HOFId = Convert.ToInt32(reader["HOFId"]),
+                    HOFName = reader["HOFName"].ToString(),
+                    HOF = Convert.ToBoolean(reader["HOF"]),
                     Name = reader["Name"].ToString(),
                     Email = reader["Email"].ToString(),
                     Mobile = reader["Mobile"].ToString(),
@@ -86,7 +91,7 @@ namespace ExpenseTracketApi.Data
             connection.Open();
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = "PR_Users_Dropdown";
+            command.CommandText = "PR_Users_GetAllHOFs";
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -118,6 +123,8 @@ namespace ExpenseTracketApi.Data
                 user.Add(new UsersModel
                 {
                     UserId = Convert.ToInt32(reader["UserId"]),
+                    HOFId = Convert.ToInt32(reader["HOFId"]),
+                    HOFName = reader["HOFName"].ToString(),
                     Name = reader["Name"].ToString(),
                     Email = reader["Email"].ToString(),
                     Mobile = reader["Mobile"].ToString(),
@@ -164,12 +171,15 @@ namespace ExpenseTracketApi.Data
             command.Parameters.AddWithValue("Mobile", user.Mobile);
             command.Parameters.AddWithValue("PasswordHash", user.PasswordHash);
             command.Parameters.AddWithValue("HOF", user.HOF);
+            command.Parameters.AddWithValue("HOFId", user.HOFId);
             int rowsAffected = command.ExecuteNonQuery();
             isInserted = rowsAffected > 0;
             return isInserted;
         }
 
         #endregion
+
+        
 
         #region UpdateUsers
         public bool UpdateUsers(UsersModel user)
@@ -186,15 +196,11 @@ namespace ExpenseTracketApi.Data
             command.Parameters.AddWithValue("Email", user.Email);
             command.Parameters.AddWithValue("Mobile", user.Mobile);
             command.Parameters.AddWithValue("PasswordHash", user.PasswordHash);
-            command.Parameters.AddWithValue("HOF", user.HOF);
+            command.Parameters.AddWithValue("HOF", user.HOF );
+            command.Parameters.AddWithValue("HOFId", user.HOFId);
             int rowsAffected = command.ExecuteNonQuery();
             isUpdate = rowsAffected > 0;
             return isUpdate;
-        }
-
-        internal object GetUserById(UsersModel user)
-        {
-            throw new NotImplementedException();
         }
         #endregion
     }

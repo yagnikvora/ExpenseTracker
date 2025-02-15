@@ -4,6 +4,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
     const [token, setToken] = useState(localStorage.getItem('token'));
+    const [userData,setUserdata] = useState()
     const authorizationToken = `Bearer ${token}`;
 
     const storeTokenInLS = (serverToken) => {
@@ -13,6 +14,7 @@ export const AuthProvider = ({children}) => {
 
     const storeUserInLS = (user) => {
         localStorage.setItem('userData' , JSON.stringify(user));
+        setUserdata(user);
     }
 
     let isLoggedIn = token ? true : false;
@@ -25,7 +27,7 @@ export const AuthProvider = ({children}) => {
     }
 
     return(
-        <AuthContext.Provider value={{storeTokenInLS , storeUserInLS , authorizationToken , isLoggedIn , logoutUser }}>
+        <AuthContext.Provider value={{storeTokenInLS , storeUserInLS , authorizationToken , userData, isLoggedIn , logoutUser }}>
             {children}
         </AuthContext.Provider>
     );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
@@ -6,12 +6,20 @@ import { toast } from "react-toastify";
 const Signup = () => {
   const { isLoggedIn, authorizationToken } = useAuth();
   const navigate = useNavigate();
+  const [hofList, setHofList] = useState([]);
+
+  useEffect(()=>{
+    fetch("http://localhost:5000/api/Users/UsersDropdown").then(res => res.json()).then(res => setHofList(res))
+  },[]);
+
   const [formData, setFormData] = useState({
     Name: '',
     Email: '',
     Mobile: '',
     PasswordHash: '',
+    HOFId: 0,
     HOF: false,
+    HOFName:''
   });
 
   const [touched, setTouched] = useState({
@@ -45,6 +53,7 @@ const Signup = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name,value)
     setFormData(prevState => ({
       ...prevState,
       [name]: name === "HOF" ? value === "true" : value,
@@ -83,6 +92,7 @@ const Signup = () => {
     setErrors(newErrors);
 
     if (Object.values(newErrors).every(error => error === '')) {
+      console.log(formData)
       const response = await fetch("http://localhost:5000/api/Users/Register", {
         method: "POST",
         headers: {
@@ -95,6 +105,9 @@ const Signup = () => {
       if (response.ok) {
         toast.success(data.message);
         navigate("/login");
+      }
+      else {
+        console.log(data)
       }
       setFormData({ Name: '', Email: '', Mobile: '', PasswordHash: '' });
       setTouched({ Name: false, Email: false, Mobile: false, PasswordHash: false });
@@ -122,7 +135,9 @@ const Signup = () => {
 
                     <form onSubmit={handleSubmit}>
                       <div className="mb-3">
-                        <label className="form-label">Is Head of Family (HOF)? <span className="text-danger">*</span></label>
+                        <label className="form-label">
+                          Are You Head of Family (HOF)? <span className="text-danger">*</span>
+                        </label>
                         <div>
                           <div className="form-check form-check-inline">
                             <input
@@ -130,12 +145,14 @@ const Signup = () => {
                               className="form-check-input"
                               id="HOFYes"
                               name="HOF"
-                              value="true"
+                              value="1"
                               checked={formData.HOF === true}
                               onChange={handleChange}
                               required
                             />
-                            <label className="form-check-label" htmlFor="HOFYes">Yes</label>
+                            <label className="form-check-label" htmlFor="HOFYes">
+                              Yes
+                            </label>
                           </div>
                           <div className="form-check form-check-inline">
                             <input
@@ -143,21 +160,50 @@ const Signup = () => {
                               className="form-check-input"
                               id="HOFNo"
                               name="HOF"
-                              value="false"
+                              value="0"
                               checked={formData.HOF === false}
                               onChange={handleChange}
                               required
                             />
-                            <label className="form-check-label" htmlFor="HOFNo">No</label>
+                            <label className="form-check-label" htmlFor="HOFNo">
+                              No
+                            </label>
                           </div>
                         </div>
                       </div>
 
+                      {/* Show HOFName dropdown if HOF is "No" */}
+                      {formData.HOF === false && (
+                        <div className="mb-3">
+                          <label htmlFor="HOFId" className="form-label">
+                            Select Head of Family <span className="text-danger">*</span>
+                          </label>
+                          <select
+                            className="form-control"
+                            id="HOFId"
+                            name="HOFId"
+                            value={formData.HOFId}
+                            onChange={handleChange}
+                            required
+                          >
+                            <option value="" disabled>Select HOF</option>
+                            {hofList.map((hof) => (
+                              
+                              <option key={hof.userId} value={hof.userId}>
+                                {hof.name}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      )}
+
                       <div className="mb-3">
-                        <label htmlFor="Name" className="form-label">Name <span className="text-danger">*</span></label>
+                        <label htmlFor="Name" className="form-label">
+                          Name <span className="text-danger">*</span>
+                        </label>
                         <input
                           type="text"
-                          className={`form-control ${errors.Name ? 'is-invalid' : ''}`}
+                          className={`form-control ${errors.Name ? "is-invalid" : ""}`}
                           id="Name"
                           name="Name"
                           value={formData.Name}
@@ -169,10 +215,12 @@ const Signup = () => {
                       </div>
 
                       <div className="mb-3">
-                        <label htmlFor="Email" className="form-label">Email address <span className="text-danger">*</span></label>
+                        <label htmlFor="Email" className="form-label">
+                          Email address <span className="text-danger">*</span>
+                        </label>
                         <input
                           type="email"
-                          className={`form-control ${errors.Email ? 'is-invalid' : ''}`}
+                          className={`form-control ${errors.Email ? "is-invalid" : ""}`}
                           id="Email"
                           name="Email"
                           value={formData.Email}
@@ -184,10 +232,12 @@ const Signup = () => {
                       </div>
 
                       <div className="mb-3">
-                        <label htmlFor="Mobile" className="form-label">Mobile number <span className="text-danger">*</span></label>
+                        <label htmlFor="Mobile" className="form-label">
+                          Mobile number <span className="text-danger">*</span>
+                        </label>
                         <input
                           type="tel"
-                          className={`form-control ${errors.Mobile ? 'is-invalid' : ''}`}
+                          className={`form-control ${errors.Mobile ? "is-invalid" : ""}`}
                           id="Mobile"
                           name="Mobile"
                           value={formData.Mobile}
@@ -199,10 +249,12 @@ const Signup = () => {
                       </div>
 
                       <div className="mb-3">
-                        <label htmlFor="PasswordHash" className="form-label">PasswordHash <span className="text-danger">*</span></label>
+                        <label htmlFor="PasswordHash" className="form-label">
+                          PasswordHash <span className="text-danger">*</span>
+                        </label>
                         <input
                           type="password"
-                          className={`form-control ${errors.PasswordHash ? 'is-invalid' : ''}`}
+                          className={`form-control ${errors.PasswordHash ? "is-invalid" : ""}`}
                           id="PasswordHash"
                           name="PasswordHash"
                           value={formData.PasswordHash}
@@ -210,7 +262,9 @@ const Signup = () => {
                           onBlur={handleBlur}
                           required
                         />
-                        {errors.PasswordHash && <div className="invalid-feedback">{errors.PasswordHash}</div>}
+                        {errors.PasswordHash && (
+                          <div className="invalid-feedback">{errors.PasswordHash}</div>
+                        )}
                       </div>
 
                       <div className="mb-3">
@@ -221,18 +275,24 @@ const Signup = () => {
                           name="acceptTerms"
                           required
                         />
-                        <label className="form-check-label d-inline" htmlFor="acceptTerms" >I agree and accept the <Link to="" href="#">terms and conditions</Link></label>
+                        <label className="form-check-label d-inline" htmlFor="acceptTerms">
+                          I agree and accept the <Link to="">terms and conditions</Link>
+                        </label>
                       </div>
 
                       <div className="d-grid">
-                        <button type="submit" className="btn btn-primary">Sign Up</button>
+                        <button type="submit" className="btn btn-primary">
+                          Sign Up
+                        </button>
                       </div>
 
                       <div className="col-12 my-1">
-                        <p className="small mb-0">Already have an account? <Link to="/login" >Log in</Link></p>
+                        <p className="small mb-0">
+                          Already have an account? <Link to="/login">Log in</Link>
+                        </p>
                       </div>
-
                     </form>
+
                   </div>
                 </div>
 

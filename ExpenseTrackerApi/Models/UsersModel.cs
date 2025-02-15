@@ -10,6 +10,8 @@ namespace ExpenseTracketApi.Models
         public string Mobile { get; set; }
         public string PasswordHash { get; set; }
         public bool HOF {  get; set; } = false;
+        public string HOFName {  get; set; }
+        public int HOFId { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime ModifiedAt { get; set; }
     }
