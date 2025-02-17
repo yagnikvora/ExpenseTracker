@@ -56,7 +56,8 @@ const Signup = () => {
     console.log(name,value)
     setFormData(prevState => ({
       ...prevState,
-      [name]: name === "HOF" ? value === "true" : value,
+      [name]: name === "HOF" ? value === "1" : value,
+      // [name]: value,
     }));
 
     if (touched[name]) {
@@ -143,7 +144,7 @@ const Signup = () => {
                             <input
                               type="radio"
                               className="form-check-input"
-                              id="HOFYes"
+                              // id="HOFYes"
                               name="HOF"
                               value="1"
                               checked={formData.HOF === true}
@@ -158,7 +159,7 @@ const Signup = () => {
                             <input
                               type="radio"
                               className="form-check-input"
-                              id="HOFNo"
+                              // id="HOFNo"
                               name="HOF"
                               value="0"
                               checked={formData.HOF === false}

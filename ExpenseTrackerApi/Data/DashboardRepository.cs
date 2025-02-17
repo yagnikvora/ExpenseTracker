@@ -13,7 +13,7 @@ namespace ExpenseTrackerApi.Data
             _configuration = configuration;
         }
 
-        public DashboardModel GetDashboardData()
+        public DashboardModel GetDashboardData(int HOFId)
         {
             var dashboard = new DashboardModel
             {
@@ -31,6 +31,7 @@ namespace ExpenseTrackerApi.Data
                 using (SqlCommand command = new SqlCommand("usp_GetExpenseDashboard", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("HOFId", HOFId);
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         // Read Counts

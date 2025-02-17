@@ -206,11 +206,17 @@
   {
     "ContainingType": "ExpenseTrackerApi.Controllers.DashboardController",
     "Method": "GetDashboardData",
-    "RelativePath": "api/Dashboard/GetDashboardData",
+    "RelativePath": "api/Dashboard/GetDashboardData/{HOFId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "HOFId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -338,6 +344,22 @@
     "Parameters": [
       {
         "Name": "TransactionID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpenseTracketApi.Controllers.TransactionsController",
+    "Method": "GetTransactionByHOFId",
+    "RelativePath": "api/Transactions/GetTransactionByHOFId/{HOFId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "HOFId",
         "Type": "System.Int32",
         "IsRequired": true
       }

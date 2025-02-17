@@ -20,10 +20,10 @@ namespace ExpenseTrackerApi.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult GetDashboardData()
+        [HttpGet("{HOFId}")]
+        public IActionResult GetDashboardData(int HOFId)
         {
-            var dashboardData = _dashboardRepository.GetDashboardData();
+            var dashboardData = _dashboardRepository.GetDashboardData(HOFId);
             return Ok(dashboardData);
         }
     }

@@ -26,13 +26,16 @@ const Dashboard = () => {
     const [error, setError] = useState(null);
     const { isLoggedIn } = useAuth();
     const toastId = "login-toast";
+    const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('userData')))
+
 
 
     useEffect(() => {
         const fetchDashboardData = async () => {
             try {
-                const response = await fetch("http://localhost:5000/api/Dashboard/GetDashboardData"); // Update API URL if needed
+                const response = await fetch("http://localhost:5000/api/Dashboard/GetDashboardData/"+userData.hofId); // Update API URL if needed
                 if (!response.ok) {
+                    console.log(response.json())
                     throw new Error("Failed to fetch data");
                 }
                 const data = await response.json();
@@ -69,6 +72,7 @@ const Dashboard = () => {
     // ✅ Check if data exists before rendering
     const summaryCards = counts.length > 0 ? (
         counts.map((count) => (
+
             <div className="col-md-3">
                 <div className="dashboard-card">
                     <div className="card-icon">
