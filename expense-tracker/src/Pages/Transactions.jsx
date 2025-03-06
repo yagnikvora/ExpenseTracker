@@ -279,6 +279,7 @@ const Transactions = () => {
                       {t.transactionNotes}
                     </td>
 
+                  {t.userId === userData.userId ? 
                     <td className="text-nowrap">
                       <button
                         className="btn btn-outline-primary btn-sm me-2"
@@ -306,7 +307,36 @@ const Transactions = () => {
                         ❌ Delete
                       </button>
                     </td>
+                    :
+                    <td className="text-nowrap">
+                    <button
+                      className="btn btn-outline-primary btn-sm me-2"
+                      onClick={() => { navigate("/transactions/addedittransaction/" + t.transactionId) }}
+                      disabled
+                    >
+                      ✏️ Edit
+                    </button>
+                    <button className="btn btn-outline-danger btn-sm" onClick={async () => {
+                      if (confirm("Do you want to delete Transaction " + t.transactionId)) {
+                        const response = await fetch(apiUrl + "/DeleteTransactionsByID/" + t.transactionId, {
+                          method: "DELETE",
+                          headers: {
+                            Authorization: authorizationToken,
+                          },
+                        });
 
+                        const responseData = await response.json();
+
+                        if (response.ok) {
+                          toast.success(responseData.message)
+                          fetchTransactions()
+                        }
+                      }
+                    }} disabled>
+                      ❌ Delete
+                    </button>
+                  </td>
+                  }
                   </tr>
                 ))}
               </tbody>

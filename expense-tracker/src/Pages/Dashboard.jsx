@@ -33,7 +33,7 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchDashboardData = async () => {
             try {
-                const response = await fetch("http://localhost:5000/api/Dashboard/GetDashboardData/"+userData.hofId); // Update API URL if needed
+                const response = await fetch("http://localhost:5000/api/Dashboard/GetDashboardData/" + userData.hofId); // Update API URL if needed
                 if (!response.ok) {
                     console.log(response.json())
                     throw new Error("Failed to fetch data");
@@ -62,7 +62,12 @@ const Dashboard = () => {
 
     if (loading) return <LoadingScreen message="Please Wait" />;
     if (error) return <div className="text-center mt-5 text-danger">Error: {error}</div>;
-    if (!dashboardData) return <div className="text-center mt-5">No data available</div>;
+    if (!dashboardData) {
+        return (
+            <LoadingScreen message="Please Wait" />
+        );
+
+    }
     if (!isLoggedIn) {
         if (!toast.isActive(toastId)) {
             toast.error("Please Login First", { toastId });
@@ -148,54 +153,61 @@ const Dashboard = () => {
             {/* Summary Cards */}
             <div className="row mb-4">{summaryCards}</div>
 
-            {/* Charts */}
-            <div className="row">
-                {categoryExpenseChart && (
-                    <div className="col-md-5">
-                        <div className="chart-container border border-1" style={{ width: "400px", height: "480px" }}>
-                            <h5>Category-wise Expenses</h5>
-                            <Pie data={categoryExpenseChart} options={pieOptions} />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h4>Category Wise Expense</h4>
+                        </div>
+                        <div class="card-body">
+                            <Pie data={categoryExpenseChart} options={pieOptions} style={{ width: "400px", height: "300px" }} />
                         </div>
                     </div>
-                )}
-                {monthlyTrendsChart && (
-                    <div className="col-md-6">
-                        <div className="chart-container border border-1" >
-                            <h5>Monthly Income & Expenses</h5>
-                            <Bar data={monthlyTrendsChart} />
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h4>Monthly Income & Expense</h4>
+                        </div>
+                        <div class="card-body">
+                            <Bar data={monthlyTrendsChart} options={pieOptions} style={{ width: "400px", height: "300px" }} />
                         </div>
                     </div>
-                )}
-
-                
-
+                </div>
             </div>
 
-            <div className="row mt-4 ">
-                {topSpendersChart && (
-                    <div className="col-md-6 ">
-                        <div className="chart-container border border-1">
-                            <h5>Top Spenders</h5>
-                            <Bar data={topSpendersChart} />
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h4>Top Spenders</h4>
+                        </div>
+                        <div class="card-body">
+                            <Bar data={topSpendersChart} options={pieOptions} style={{ width: "400px", height: "300px" }} />
                         </div>
                     </div>
-                )}
-                {/* Quick Links Section */}
-                <div className="col-md-5">
-                    <div className="card dash-card p-4 shadow-sm rounded border border-1">
-                        <h5 className="text-primary mb-3">Quick Links</h5>
-                        <Link to="/" className="btn btn-outline-danger w-100 py-2 my-2 rounded">
-                            🏠 Go To Home
-                        </Link>
-                        <Link to="/transactions/addedittransaction" className="btn btn-outline-success w-100 py-2 my-2 rounded">
-                            ➕ Add New Transaction
-                        </Link>
-                        <Link to="/category/addeditcategory/" className="btn btn-outline-info w-100 py-2 my-2 rounded">
-                            📂 Add New Category
-                        </Link>
-                        <Link to="/budgets/addeditbudget" className="btn btn-outline-warning w-100 py-2 my-2 rounded">
-                            💰 Add New Budget
-                        </Link>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h4>Quick Links</h4>
+                        </div>
+                            <div className="rounded p-5">
+                                <Link to="/" className="btn btn-outline-danger w-100 py-2 my-2 rounded">
+                                    🏠 Go To Home
+                                </Link>
+                                <Link to="/transactions/addedittransaction" className="btn btn-outline-success w-100 py-2 my-2 rounded">
+                                    ➕ Add New Transaction
+                                </Link>
+                                <Link to="/category/addeditcategory/" className="btn btn-outline-info w-100 py-2 my-2 rounded">
+                                    📂 Add New Category
+                                </Link>
+                                <Link to="/budgets/addeditbudget" className="btn btn-outline-warning w-100 py-2 my-2 rounded">
+                                    💰 Add New Budget
+                                </Link>
+                        </div>
                     </div>
                 </div>
             </div>
