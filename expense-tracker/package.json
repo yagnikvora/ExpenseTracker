@@ -6,7 +6,7 @@
   "scripts": {
     "start": "concurrently \"npm run run-api\" \"npm run dev\"",
     "run-api": "dotnet watch run --project ../ExpenseTrackerApi/ExpenseTrackerApi.csproj",
-    "dev": "vite --open",
+    "dev": "vite --open --host",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

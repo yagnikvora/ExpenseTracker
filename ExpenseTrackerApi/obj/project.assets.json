@@ -2539,11 +2539,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\ExpenseTrackerApi.csproj",
+      "projectUniqueName": "Y:\\B.Tech\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\ExpenseTrackerApi.csproj",
       "projectName": "ExpenseTrackerApi",
-      "projectPath": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\ExpenseTrackerApi.csproj",
+      "projectPath": "Y:\\B.Tech\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\ExpenseTrackerApi.csproj",
       "packagesPath": "C:\\Users\\yagni\\.nuget\\packages\\",
-      "outputPath": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\obj\\",
+      "outputPath": "Y:\\B.Tech\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\yagni\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2621,5 +2621,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json."
+    }
+  ]
 }

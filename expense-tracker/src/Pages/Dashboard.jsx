@@ -59,21 +59,21 @@ const Dashboard = () => {
         const a = (Math.random() * 0.5 + 0.5).toFixed(2); // Random Alpha (0.5 - 1 for better visibility)
         return `rgba(${r}, ${g}, ${b}, ${a})`;
     };
-
+    if (!isLoggedIn) {
+        if (!toast.isActive(toastId)) {
+            toast.error("Please Login First", { toastId });
+        }
+        return <Navigate to="/" />
+    }
     if (loading) return <LoadingScreen message="Please Wait" />;
-    if (error) return <div className="text-center mt-5 text-danger">Error: {error}</div>;
+    // if (error) return <div className="text-center mt-5 text-danger">Error: {error}</div>;
     if (!dashboardData) {
         return (
             <LoadingScreen message="Please Wait" />
         );
 
     }
-    if (!isLoggedIn) {
-        if (!toast.isActive(toastId)) {
-            toast.error("Please Login First", { toastId });
-        }
-        return <Navigate to="/" />
-    } const { counts = [], recentTransactions = [], categoryWiseExpenses = [], monthlyTrends = [], topSpenders = [] } = dashboardData;
+    const { counts = [], recentTransactions = [], categoryWiseExpenses = [], monthlyTrends = [], topSpenders = [] } = dashboardData;
     // ✅ Check if data exists before rendering
     const summaryCards = counts.length > 0 ? (
         counts.map((count) => (
@@ -194,19 +194,19 @@ const Dashboard = () => {
                         <div class="card-header bg-primary text-white">
                             <h4>Quick Links</h4>
                         </div>
-                            <div className="rounded p-5">
-                                <Link to="/" className="btn btn-outline-danger w-100 py-2 my-2 rounded">
-                                    🏠 Go To Home
-                                </Link>
-                                <Link to="/transactions/addedittransaction" className="btn btn-outline-success w-100 py-2 my-2 rounded">
-                                    ➕ Add New Transaction
-                                </Link>
-                                <Link to="/category/addeditcategory/" className="btn btn-outline-info w-100 py-2 my-2 rounded">
-                                    📂 Add New Category
-                                </Link>
-                                <Link to="/budgets/addeditbudget" className="btn btn-outline-warning w-100 py-2 my-2 rounded">
-                                    💰 Add New Budget
-                                </Link>
+                        <div className="rounded p-5">
+                            <Link to="/" className="btn btn-outline-danger w-100 py-2 my-2 rounded">
+                                🏠 Go To Home
+                            </Link>
+                            <Link to="/transactions/addedittransaction" className="btn btn-outline-success w-100 py-2 my-2 rounded">
+                                ➕ Add New Transaction
+                            </Link>
+                            <Link to="/category/addeditcategory/" className="btn btn-outline-info w-100 py-2 my-2 rounded">
+                                📂 Add New Category
+                            </Link>
+                            <Link to="/budgets/addeditbudget" className="btn btn-outline-warning w-100 py-2 my-2 rounded">
+                                💰 Add New Budget
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\ExpenseTrackerApi.csproj": {}
+    "Y:\\B.Tech\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\ExpenseTrackerApi.csproj": {}
   },
   "projects": {
-    "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\ExpenseTrackerApi.csproj": {
+    "Y:\\B.Tech\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\ExpenseTrackerApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\ExpenseTrackerApi.csproj",
+        "projectUniqueName": "Y:\\B.Tech\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\ExpenseTrackerApi.csproj",
         "projectName": "ExpenseTrackerApi",
-        "projectPath": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\ExpenseTrackerApi.csproj",
+        "projectPath": "Y:\\B.Tech\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\ExpenseTrackerApi.csproj",
         "packagesPath": "C:\\Users\\yagni\\.nuget\\packages\\",
-        "outputPath": "Y:\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\obj\\",
+        "outputPath": "Y:\\B.Tech\\SEM-6\\Advance .NET\\ExpanceTracker\\ExpenseTrackerApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yagni\\AppData\\Roaming\\NuGet\\NuGet.Config",
